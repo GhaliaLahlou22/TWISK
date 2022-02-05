@@ -1,5 +1,7 @@
 package twisk.monde;
 
+import twisk.outils.FabriqueNumero;
+
 import java.util.Iterator;
 
 public abstract class Etape implements Iterable<Etape> {
@@ -9,12 +11,14 @@ public abstract class Etape implements Iterable<Etape> {
      */
     protected String nom;
     protected GestionnaireSuccesseurs Gest_Succ;
+    protected int numEtape ;
      /*
      Les constucteurs
       */
     public Etape(String nom){
         this.nom=nom;
         this.Gest_Succ=new GestionnaireSuccesseurs();
+        this.numEtape = FabriqueNumero.getInstance().getNumeroEtape();
     }
     /*
     Les fonctions

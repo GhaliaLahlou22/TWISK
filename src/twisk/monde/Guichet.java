@@ -1,10 +1,13 @@
 package twisk.monde;
 
+import twisk.outils.FabriqueNumero;
+
 public class Guichet extends Etape{
     /*
     Les variables
      */
     private int nbjetons;
+    private int nbSemaphore ;
 
     /*
     Les constructeurs
@@ -12,6 +15,7 @@ public class Guichet extends Etape{
     public Guichet(String nom){
         super(nom);
         nbjetons=2;
+        this.nbSemaphore = FabriqueNumero.getInstance().getNumeroSemaphore();
     }
 
     @Override
