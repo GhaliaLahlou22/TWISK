@@ -13,6 +13,12 @@ public class Guichet extends Etape{
         super(nom);
         nbjetons=2;
     }
+
+    @Override
+    public boolean estUneActivite() {
+        return false;
+    }
+
     public Guichet(String nom,int nb){
         super(nom);
         this.nbjetons=nb;

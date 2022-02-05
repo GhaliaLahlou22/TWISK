@@ -26,7 +26,7 @@ public class Monde implements Iterable<Etape>{
     public void aCommeSortie(Etape... etapes){
         this.SasS.ajouterSucceseur(etapes);
     }
-    public void Ajouter(Etape...etapes){
+    public void ajouter(Etape...etapes){
         this.Gest_etapes.ajouter(etapes);
     }
     public int nbEtapes(){

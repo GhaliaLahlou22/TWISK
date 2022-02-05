@@ -20,17 +20,19 @@ public abstract class Etape implements Iterable<Etape> {
     Les fonctions
      */
     public void ajouterSucceseur(Etape... e){
+        Gest_Succ.ajouter(e);
 
     }
-    public boolean estUneActivite(){
-        return true;
-    }
-    public boolean estUnGuichet(){
-        return true;
-    }
+    public abstract boolean estUneActivite();
+    public abstract boolean estUnGuichet();
     @Override
     public Iterator<Etape> iterator(){
         return Gest_Succ.iterator();
     }
     public abstract String toString();
+
+    public int nbSuccesseur(){
+       return Gest_Succ.nbEtapes();
+    }
+
 }
