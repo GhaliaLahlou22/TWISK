@@ -9,6 +9,7 @@ public class GestionnaireSuccesseurs implements Iterable<Etape>{
      */
     private ArrayList<Etape> liste_etapes;
     /*
+
     Les constructeurs
      */
     GestionnaireSuccesseurs(){

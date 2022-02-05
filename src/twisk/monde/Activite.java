@@ -6,7 +6,6 @@ public class Activite extends Etape {
      */
     private int temps;
     private int ecartTemps;
-
     /*
     Les constructeurs
      */

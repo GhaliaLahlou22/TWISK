@@ -7,6 +7,7 @@ public class GestionnaireEtapes implements Iterable<Etape> {
     /*
     Les variables
      */
+
     private ArrayList<Etape> Liste_Steps;
     /*
     Les constructeurs

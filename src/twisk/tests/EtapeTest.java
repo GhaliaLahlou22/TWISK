@@ -34,6 +34,7 @@ class EtapeTest {
         file_balancoire.ajouterSucceseur(Balancoir);
         Balancoir.ajouterSucceseur(plage,file_wc);
         file_wc.ajouterSucceseur(toillete);
+
         assertEquals(1,file_wc.nbSuccesseur());
         assertEquals(1,file_tob.nbSuccesseur());
         assertEquals(1,file_balancoire.nbSuccesseur());

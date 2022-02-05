@@ -9,6 +9,7 @@ public class Guichet extends Etape{
     /*
     Les constructeurs
      */
+
     public Guichet(String nom){
         super(nom);
         nbjetons=2;

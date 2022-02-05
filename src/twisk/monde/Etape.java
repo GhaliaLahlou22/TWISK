@@ -12,6 +12,7 @@ public abstract class Etape implements Iterable<Etape> {
      /*
      Les constucteurs
       */
+
     public Etape(String nom){
         this.nom=nom;
         this.Gest_Succ=new GestionnaireSuccesseurs();
