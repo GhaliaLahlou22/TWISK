@@ -1,6 +1,7 @@
 package twisk.monde;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 
 public class GestionnaireSuccesseurs implements Iterable<Etape>{
@@ -9,13 +10,13 @@ public class GestionnaireSuccesseurs implements Iterable<Etape>{
      */
     private ArrayList<Etape> liste_etapes;
     /*
-
     Les constructeurs
      */
-    GestionnaireSuccesseurs(){
+    public GestionnaireSuccesseurs(){
         this.liste_etapes = new ArrayList<Etape>();
     }
     public void ajouter(Etape... etapes){
+        liste_etapes.addAll(Arrays.asList(etapes));
 
     }
     public int nbEtapes(){
@@ -28,6 +29,6 @@ public class GestionnaireSuccesseurs implements Iterable<Etape>{
     }
     @Override
     public String toString(){
-      return "Le successeur "+liste_etapes;
+      return "Le successeur "+this.liste_etapes;
     }
 }

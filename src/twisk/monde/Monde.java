@@ -6,7 +6,6 @@ public class Monde implements Iterable<Etape>{
     /*
     Les variables
      */
-
     private GestionnaireEtapes Gest_etapes;
     private SasEntree SasE;
     private SasSortie  SasS;
@@ -27,7 +26,7 @@ public class Monde implements Iterable<Etape>{
     public void aCommeSortie(Etape... etapes){
         this.SasS.ajouterSucceseur(etapes);
     }
-    public void Ajouter(Etape...etapes){
+    public void ajouter(Etape...etapes){
         this.Gest_etapes.ajouter(etapes);
     }
     public int nbEtapes(){
@@ -49,6 +48,6 @@ public class Monde implements Iterable<Etape>{
     }
     @Override
     public String toString(){
-        return "Le monde a comme entree:"+this.SasE+ " Et comme sortie "+this.SasS;
+        return "Le monde: \n "+Gest_etapes.toString()+"\n Comme entrées: "+this.SasE.toString()+ " \n Et comme sortie: "+this.SasS.toString();
     }
 }

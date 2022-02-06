@@ -1,19 +1,28 @@
 package twisk.monde;
 
+import twisk.outils.FabriqueNumero;
+
 public class Guichet extends Etape{
     /*
     Les variables
      */
     private int nbjetons;
+    private int nbSemaphore ;
 
     /*
     Les constructeurs
      */
-
     public Guichet(String nom){
         super(nom);
         nbjetons=2;
+        this.nbSemaphore = FabriqueNumero.getInstance().getNumeroSemaphore();
     }
+
+    @Override
+    public boolean estUneActivite() {
+        return false;
+    }
+
     public Guichet(String nom,int nb){
         super(nom);
         this.nbjetons=nb;
@@ -26,6 +35,6 @@ public class Guichet extends Etape{
     }
     @Override
     public String toString(){
-     return "Le nombre de jetons de"+nom+" est "+nbjetons+ " jetons";
+     return this.nom+ " Le nombre de jetons "+nbjetons+ " jetons";
     }
 }

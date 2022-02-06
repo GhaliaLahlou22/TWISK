@@ -1,12 +1,10 @@
 package twisk.tests;
 
-import org.junit.jupiter.api.BeforeAll;
-import twisk.monde.Activite;
-import twisk.monde.Guichet;
 import twisk.monde.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-class EtapeTest {
+public class EtapeTest {
 
     Etape file_tob;
     Etape file_balancoire;
@@ -46,14 +44,21 @@ class EtapeTest {
 
     @org.junit.jupiter.api.Test
     void estUneActivite() {
+        assertFalse(file_tob.estUneActivite());
+        assertTrue(toboggan.estUneActivite());
+        assertFalse(file_balancoire.estUneActivite());
+        assertTrue(plage.estUneActivite());
 
     }
 
     @org.junit.jupiter.api.Test
     void estUnGuichet() {
+        assertTrue(file_tob.estUnGuichet());
+        assertTrue(file_tob.estUnGuichet());
+        assertFalse(toboggan.estUnGuichet());
+        assertFalse(toboggan.estUnGuichet());
+
     }
 
-    @org.junit.jupiter.api.Test
-    void iterator() {
-    }
+
 }

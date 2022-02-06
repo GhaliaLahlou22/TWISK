@@ -7,7 +7,6 @@ public class GestionnaireEtapes implements Iterable<Etape> {
     /*
     Les variables
      */
-
     private ArrayList<Etape> Liste_Steps;
     /*
     Les constructeurs
@@ -33,6 +32,6 @@ public class GestionnaireEtapes implements Iterable<Etape> {
     }
     @Override
     public String toString(){
-        return "Les etapes :"+Liste_Steps;
+        return "Les etapes :"+this.Liste_Steps;
     }
 }

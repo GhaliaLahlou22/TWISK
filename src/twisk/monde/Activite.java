@@ -6,6 +6,7 @@ public class Activite extends Etape {
      */
     private int temps;
     private int ecartTemps;
+
     /*
     Les constructeurs
      */
@@ -23,9 +24,15 @@ public class Activite extends Etape {
     public boolean estUneActivite(){
         return true;
     }
+
+    @Override
+    public boolean estUnGuichet() {
+        return false;
+    }
+
     @Override
     public String toString() {
-        return "Nom: "+nom+ "Le temps : "+temps+ "L'écart temps :"+ecartTemps;
+        return " " +this.nom+ " Le temps : "+this.temps+ " L'écart temps : "+ecartTemps;
     }
 
 }
