@@ -1,5 +1,6 @@
 package twisk.simulation;
 
+<<<<<<< HEAD
 import twisk.monde.*;
 
 
@@ -8,6 +9,14 @@ public class Simulation {
     /*
     Les constructeurs
      */
+=======
+import twisk.monde.Monde;
+
+public class Simulation {
+    /*
+   Les constructeurs
+    */
+>>>>>>> main
     public Simulation(){
 
     }

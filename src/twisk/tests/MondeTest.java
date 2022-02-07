@@ -3,8 +3,15 @@ package twisk.tests;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import twisk.monde.*;
+<<<<<<< HEAD
 import java.util.Iterator;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+=======
+
+import java.util.Iterator;
+
+import static org.junit.Assert.assertEquals;
+>>>>>>> main
 
 public class MondeTest {
     Monde monde;
@@ -60,7 +67,11 @@ public class MondeTest {
 
     }
 
+<<<<<<< HEAD
   /*  @Test
+=======
+    @Test
+>>>>>>> main
     void iterator() {
         Iterator<Etape> iterart = monde.iterator();
         iterart.next();
@@ -82,5 +93,11 @@ public class MondeTest {
         assertEquals(etape8,toillete);
         Etape etape9 = iterart.next();
         assertEquals(etape9,sortie);
+<<<<<<< HEAD
     }*/
+=======
+
+
+    }
+>>>>>>> main
 }

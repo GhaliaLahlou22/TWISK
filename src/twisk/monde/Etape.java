@@ -24,7 +24,11 @@ public abstract class Etape implements Iterable<Etape> {
     Les fonctions
      */
     public void ajouterSucceseur(Etape... e){
+<<<<<<< HEAD
         this.Gest_Succ.ajouter(e);
+=======
+        Gest_Succ.ajouter(e);
+>>>>>>> main
 
     }
     public abstract boolean estUneActivite();
@@ -38,4 +42,9 @@ public abstract class Etape implements Iterable<Etape> {
        return Gest_Succ.nbEtapes();
     }
     public abstract String toString();
+
+    public int nbSuccesseur(){
+       return Gest_Succ.nbEtapes();
+    }
+
 }

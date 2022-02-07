@@ -6,8 +6,11 @@ import twisk.monde.Guichet;
 import twisk.monde.Monde;
 import twisk.simulation.Simulation;
 
+<<<<<<< HEAD
 import javax.imageio.plugins.tiff.ExifParentTIFFTagSet;
 
+=======
+>>>>>>> main
 public class ClientTwisk {
     public static void main(String[] args){
         System.out.println("************  TWISK  ***********");

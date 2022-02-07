@@ -2,7 +2,13 @@ package twisk.tests;
 
 import twisk.monde.*;
 
+<<<<<<< HEAD
 import static org.junit.jupiter.api.Assertions.*;
+=======
+import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+>>>>>>> main
 
 public class EtapeTest {
 
@@ -58,6 +64,10 @@ public class EtapeTest {
         assertFalse(toboggan.estUnGuichet());
         assertFalse(toboggan.estUnGuichet());
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
     }
 
 

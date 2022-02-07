@@ -8,8 +8,12 @@ public class ActiviteRestreinte extends Activite{
     public ActiviteRestreinte(String nom , int t , int e){
         super(nom ,t ,e);
     }
+<<<<<<< HEAD
     public String toString(){
         return " "+super.toString();
     }
+=======
+
+>>>>>>> main
 
 }
