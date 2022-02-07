@@ -3,6 +3,8 @@ package twisk.tests;
 import twisk.monde.*;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class EtapeTest {
 
@@ -44,16 +46,20 @@ public class EtapeTest {
 
     @org.junit.jupiter.api.Test
     void estUneActivite() {
-        boolean b = file_tob.estUneActivite();
-       boolean b1 = toboggan.estUneActivite();
+        assertFalse(file_tob.estUneActivite());
+        assertTrue(toboggan.estUneActivite());
+        assertFalse(file_balancoire.estUneActivite());
+        assertTrue(plage.estUneActivite());
 
     }
 
     @org.junit.jupiter.api.Test
     void estUnGuichet() {
-       boolean b = file_tob.estUnGuichet();
-        boolean b1 = file_tob.estUnGuichet();
-        boolean b2 = toboggan.estUnGuichet();
+        assertTrue(file_tob.estUnGuichet());
+        assertTrue(file_tob.estUnGuichet());
+        assertFalse(toboggan.estUnGuichet());
+        assertFalse(toboggan.estUnGuichet());
+
 
     }
 

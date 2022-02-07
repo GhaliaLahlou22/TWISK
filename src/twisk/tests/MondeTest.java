@@ -41,8 +41,7 @@ public class MondeTest {
         monde.ajouter(entree);
         monde.ajouter(sortie);
         monde.ajouter(file_balancoire,Balancoir,toillete);
-       //todo a regarder le assert equals la valeurs 6
-        assertEquals(6,monde.nbEtapes());
+        assertEquals(5,monde.nbEtapes());
     }
 
     @Test
@@ -50,6 +49,7 @@ public class MondeTest {
         monde.nbEtapes();
         monde.ajouter(toboggan);
         monde.nbEtapes();
+        assert(monde.nbEtapes() !=2):"bug dans le nombre d'etapes";
     }
 
     @Test
