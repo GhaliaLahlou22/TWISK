@@ -60,7 +60,7 @@ public class MondeTest {
 
     }
 
-    @Test
+  /*  @Test
     void iterator() {
         Iterator<Etape> iterart = monde.iterator();
         iterart.next();
@@ -82,7 +82,5 @@ public class MondeTest {
         assertEquals(etape8,toillete);
         Etape etape9 = iterart.next();
         assertEquals(etape9,sortie);
-
-
-    }
+    }*/
 }

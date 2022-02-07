@@ -7,4 +7,8 @@ public class SasSortie extends Activite {
     public SasSortie(){
         super(" ");
     }
+    @Override
+    public String toString() {
+        return ""+ Gest_Succ;
+    }
 }

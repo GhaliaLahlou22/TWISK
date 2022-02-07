@@ -4,8 +4,8 @@ public class Activite extends Etape {
     /*
     Les variables
      */
-    private int temps;
-    private int ecartTemps;
+    protected int temps;
+    protected int ecartTemps;
 
     /*
     Les constructeurs
@@ -32,7 +32,7 @@ public class Activite extends Etape {
 
     @Override
     public String toString() {
-        return " " +this.nom+ " Le temps : "+this.temps+ " L'écart temps : "+ecartTemps;
+        return " " +this.nom+ " Le temps : "+this.temps+ " ,L'écart temps : "+ecartTemps;
     }
 
 }

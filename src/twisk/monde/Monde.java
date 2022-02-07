@@ -44,10 +44,10 @@ public class Monde implements Iterable<Etape>{
 
     @Override
     public Iterator<Etape> iterator() {
-        return Gest_etapes.iterator();
+        return this.Gest_etapes.iterator();
     }
     @Override
     public String toString(){
-        return "Le monde: \n "+Gest_etapes.toString()+"\n Comme entrées: "+this.SasE.toString()+ " \n Et comme sortie: "+this.SasS.toString();
+        return "Le monde: \n "+Gest_etapes.toString()+"\n Les entrées: "+this.SasE.toString()+ " \n Les sorties: "+this.SasS.toString();
     }
 }

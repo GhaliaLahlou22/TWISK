@@ -9,7 +9,7 @@ public class ActiviteRestreinte extends Activite{
         super(nom ,t ,e);
     }
     public String toString(){
-        return " ACT RESTRAINTE :"+super.toString();
+        return " "+super.toString();
     }
 
 }
