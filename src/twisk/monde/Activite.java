@@ -32,7 +32,7 @@ public class Activite extends Etape {
 
     @Override
     public String toString() {
-        return " " +this.nom+ " Le temps : "+this.temps+ " ,L'écart temps : "+ecartTemps;
+        return "  " +this.nom+ " Le temps : "+this.temps+ " ,L'écart temps : "+ecartTemps;
     }
 
 }

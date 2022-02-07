@@ -17,7 +17,7 @@ public class FabriqueNumero {
     }
 
     public int getNumeroEtape() {
-        assert (cptEtape >= 0) : "Bug ! , cpt negatif ";
+        assert (cptEtape >= 0) : " Bug ! , cpt negatif ";
         cptEtape++;
         return cptEtape - 1;
     }

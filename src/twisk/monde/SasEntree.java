@@ -5,7 +5,7 @@ public class SasEntree extends Activite{
     Les constructeurs
      */
     public SasEntree(){
-        super(" ");
+        super("  ");
     }
     @Override
     public String toString() {

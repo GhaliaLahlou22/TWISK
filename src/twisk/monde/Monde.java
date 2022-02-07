@@ -48,6 +48,6 @@ public class Monde implements Iterable<Etape>{
     }
     @Override
     public String toString(){
-        return "Le monde: \n "+Gest_etapes.toString()+"\n Les entrées: "+this.SasE.toString()+ " \n Les sorties: "+this.SasS.toString();
+        return " Le monde: \n "+Gest_etapes.toString()+"\n Les entrées: "+this.SasE.toString()+ " \n Les sorties: "+this.SasS.toString();
     }
 }

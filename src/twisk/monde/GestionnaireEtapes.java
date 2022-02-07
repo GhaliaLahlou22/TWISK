@@ -32,6 +32,6 @@ public class GestionnaireEtapes implements Iterable<Etape> {
     }
     @Override
     public String toString(){
-        return "Les étapes :"+this.Liste_Steps;
+        return " Les étapes :"+this.Liste_Steps;
     }
 }
