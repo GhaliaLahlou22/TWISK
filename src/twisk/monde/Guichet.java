@@ -1,8 +1,8 @@
 package twisk.monde;
 
-import twisk.outils.FabriqueNumero;
 
-public class Guichet extends Etape{
+import twisk.outils.FabriqueNumero;
+public class Guichet extends Etape {
     /*
     Les variables
      */
@@ -36,5 +36,10 @@ public class Guichet extends Etape{
     @Override
     public String toString(){
      return this.nom+ " "+nbjetons+ " jetons";
+    }
+
+    @Override
+    public StringBuffer toC() {
+        return null;
     }
 }

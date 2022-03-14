@@ -1,15 +1,16 @@
 package twisk.monde;
 
-public class SasEntree extends Activite{
+public class SasEntree extends Activite {
     /*
     Les constructeurs
      */
     public SasEntree(){
-        super("  ");
+        super(" ");
     }
+
     @Override
     public String toString() {
-        return  ""+Gest_Succ;
+        return  ""+this.Gest_Succ;
     }
 }
 

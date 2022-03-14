@@ -1,5 +1,5 @@
 package twisk.simulation;
-import twisk.monde.*;
+import twisk.monde.Monde;
 
 
 public class Simulation {

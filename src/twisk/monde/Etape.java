@@ -33,6 +33,12 @@ public abstract class Etape implements Iterable<Etape> {
     }
     public abstract boolean estUneActivite();
     public abstract boolean estUnGuichet();
+    public String getNom(){
+        return nom;
+    }
+    public int getNum(){
+        return numEtape;
+    }
     @Override
     public Iterator<Etape> iterator(){
         return Gest_Succ.iterator();
@@ -44,5 +50,5 @@ public abstract class Etape implements Iterable<Etape> {
     public abstract String toString();
 
 
-
+    public abstract StringBuffer toC();
 }

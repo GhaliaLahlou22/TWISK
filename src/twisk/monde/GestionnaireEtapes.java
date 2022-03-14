@@ -17,6 +17,7 @@ public class GestionnaireEtapes implements Iterable<Etape> {
     /*
     Les fonctions
      */
+
     public void ajouter(Etape... etapes) {
         for (Etape e : etapes) {
             this.Liste_Steps.add(e);
@@ -32,6 +33,6 @@ public class GestionnaireEtapes implements Iterable<Etape> {
     }
     @Override
     public String toString(){
-        return " Les étapes :"+this.Liste_Steps;
+        return ""+this.Liste_Steps;
     }
 }

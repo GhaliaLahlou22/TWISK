@@ -3,6 +3,8 @@ package twisk.tests;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import twisk.monde.*;
+import twisk.monde.Monde;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
