@@ -7,12 +7,12 @@ public class GestionnaireEtapes implements Iterable<Etape> {
     /*
     Les variables
      */
-    private ArrayList<Etape> Liste_Steps;
+    private ArrayList<Etape> liste_Steps;
     /*
     Les constructeurs
      */
     public GestionnaireEtapes(){
-        this.Liste_Steps= new ArrayList<Etape>();
+        this.liste_Steps= new ArrayList<Etape>();
     }
     /*
     Les fonctions
@@ -20,19 +20,22 @@ public class GestionnaireEtapes implements Iterable<Etape> {
 
     public void ajouter(Etape... etapes) {
         for (Etape e : etapes) {
-            this.Liste_Steps.add(e);
+            this.liste_Steps.add(e);
         }
     }
     public int nbEtapes(){
-        return Liste_Steps.size();
+        return liste_Steps.size();
     }
 
     @Override
     public Iterator<Etape> iterator() {
-        return Liste_Steps.iterator();
+        return liste_Steps.iterator();
+    }
+    public ArrayList<Etape> getEtapes() {
+        return liste_Steps;
     }
     @Override
     public String toString(){
-        return ""+this.Liste_Steps;
+        return ""+this.liste_Steps;
     }
 }

@@ -39,7 +39,16 @@ public class Guichet extends Etape {
     }
 
     @Override
-    public StringBuffer toC() {
-        return null;
+    public String toC() {
+        return "P(" + "ids" + "," + getSemaphore() + "); \n" +
+                "transfert(" + getNom().replaceAll("\\s+", "") + "," + getSuivant().getNom().replaceAll("\\s+", "") + "); \n" +
+                "delai(" + getSuivant().getTemps() + "," + getSuivant().getEcartTemps() + ");\n" +
+                "V(" + "ids" + "," + getSemaphore() + ");\n" + getSuivant().toC();
+    }
+    public ActiviteRestreinte getSuivant() {
+        return (ActiviteRestreinte) getGestionnaireSuccesseurs().getEtapes().get(0);
+    }
+    private int getSemaphore() {
+        return nbSemaphore;
     }
 }

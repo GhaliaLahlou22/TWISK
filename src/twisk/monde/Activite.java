@@ -25,6 +25,13 @@ public class Activite extends Etape {
         return true;
     }
 
+    public int getTemps() {
+        return temps;
+    }
+
+    public int getEcartTemps() {
+        return ecartTemps;
+    }
     @Override
     public boolean estUnGuichet() {
         return false;
@@ -36,8 +43,15 @@ public class Activite extends Etape {
     }
 
     @Override
-    public StringBuffer toC() {
-        return null;
+    public String toC() {
+        StringBuilder str = new StringBuilder();
+        str.append("delai(").append(getTemps()).append(",").append(getEcartTemps()).append(");\n");
+        for(int i = 0; i < getGestionnaireSuccesseurs().nbEtapes(); ++i) {
+           str.append("transfert(").append(getNom().replaceAll("\\s+", "")).append(",").append(getGestionnaireSuccesseurs().getEtapes().get(i).getNom().replaceAll("\\s+", "")).append(");\n").append(getGestionnaireSuccesseurs().getEtapes().get(i).toC()).append("\n}\n");
+        }
+        str.append("}");
+        return str.toString();
     }
+
 
 }

@@ -10,14 +10,14 @@ public abstract class Etape implements Iterable<Etape> {
     Les variables
      */
     protected String nom;
-    protected GestionnaireSuccesseurs Gest_Succ;
+    protected GestionnaireSuccesseurs gest_Succ;
     protected int numEtape ;
      /*
      Les constucteurs
       */
     public Etape(String nom){
         this.nom=nom;
-        this.Gest_Succ=new GestionnaireSuccesseurs();
+        this.gest_Succ=new GestionnaireSuccesseurs();
         this.numEtape = FabriqueNumero.getInstance().getNumeroEtape();
     }
     /*
@@ -25,9 +25,9 @@ public abstract class Etape implements Iterable<Etape> {
      */
     public void ajouterSucceseur(Etape... e){
 
-        this.Gest_Succ.ajouter(e);
+        this.gest_Succ.ajouter(e);
 
-        Gest_Succ.ajouter(e);
+        gest_Succ.ajouter(e);
 
 
     }
@@ -41,14 +41,22 @@ public abstract class Etape implements Iterable<Etape> {
     }
     @Override
     public Iterator<Etape> iterator(){
-        return Gest_Succ.iterator();
+        return gest_Succ.iterator();
     }
 
     public int nbSuccesseur(){
-       return Gest_Succ.nbEtapes();
+       return gest_Succ.nbEtapes();
     }
     public abstract String toString();
 
 
-    public abstract StringBuffer toC();
+    public abstract String toC();
+    public Etape getSuivant() {
+        return getGestionnaireSuccesseurs().getEtapes().get(0);
+    }
+
+    public GestionnaireSuccesseurs getGestionnaireSuccesseurs() {
+        return gest_Succ;
+
+    }
 }

@@ -10,7 +10,7 @@ public class SasEntree extends Activite {
 
     @Override
     public String toString() {
-        return  ""+this.Gest_Succ;
+        return  ""+this.gest_Succ;
     }
 }
 
