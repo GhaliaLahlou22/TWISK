@@ -44,13 +44,13 @@ public class Activite extends Etape {
 
     @Override
     public String toC() {
-        StringBuilder str = new StringBuilder();
-        str.append("delai(").append(getTemps()).append(",").append(getEcartTemps()).append(");\n");
+        StringBuilder strC = new StringBuilder();
+        strC.append("delai(").append(getTemps()).append(",").append(getEcartTemps()).append(");\n").append("int nb = (int)((rand()/(float)RAND_MAX)*").append(getGestionnaireSuccesseurs().nbEtapes()).append(");\n").append("switch(nb) {\n");
         for(int i = 0; i < getGestionnaireSuccesseurs().nbEtapes(); ++i) {
-           str.append("transfert(").append(getNom().replaceAll("\\s+", "")).append(",").append(getGestionnaireSuccesseurs().getEtapes().get(i).getNom().replaceAll("\\s+", "")).append(");\n").append(getGestionnaireSuccesseurs().getEtapes().get(i).toC()).append("\n}\n");
+            strC.append("case ").append(i).append(": {").append("transfert(").append(getNom().replaceAll("\\s+", "")).append(",").append(getGestionnaireSuccesseurs().getEtapes().get(i).getNom().replaceAll("\\s+", "")).append(");\n").append(getGestionnaireSuccesseurs().getEtapes().get(i).toC()).append("break;\n}\n");
         }
-        str.append("}");
-        return str.toString();
+        strC.append("}");
+        return strC.toString();
     }
 
 

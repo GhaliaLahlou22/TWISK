@@ -7,8 +7,7 @@ public class SasEntree extends Activite {
     public SasEntree(){
         super(" ");
     }
-
-    @Override
+        @Override
     public String toString() {
         return  ""+this.gest_Succ;
     }

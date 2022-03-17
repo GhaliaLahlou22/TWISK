@@ -47,7 +47,7 @@ public class Monde implements Iterable<Etape>{
     public SasEntree getSasEntree(){
         return sasE;
     }
-    public StringBuilder toC(){
+    public String toC(){
         StringBuilder s = new StringBuilder();
         s.append("#include <stdlib.h>\n" +
                 "#include <stdio.h>\n" +
@@ -61,7 +61,7 @@ public class Monde implements Iterable<Etape>{
                         "{");
         s.append(getSasEntree().toC());
         s.append("}");
-        return s;
+        return s.toString();
     }
     @Override
     public Iterator<Etape> iterator() {
