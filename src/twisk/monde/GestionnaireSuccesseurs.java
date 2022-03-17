@@ -20,9 +20,11 @@ public class GestionnaireSuccesseurs implements Iterable<Etape>{
         liste_etapes.addAll(Arrays.asList(etapes));
 
     }
+
     public int nbEtapes(){
       return this.liste_etapes.size();
     }
+
 
     @Override
     public Iterator<Etape> iterator() {
@@ -30,7 +32,11 @@ public class GestionnaireSuccesseurs implements Iterable<Etape>{
     }
     @Override
     public String toString(){
-      return ""+this.liste_etapes;
+        StringBuilder str = new StringBuilder();
+        for(Etape step :getEtapes()){
+            str.append(step).append(" ");
+        }
+        return str.toString();
     }
 
     public ArrayList<Etape> getEtapes() {

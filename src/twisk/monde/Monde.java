@@ -69,6 +69,6 @@ public class Monde implements Iterable<Etape>{
     }
     @Override
     public String toString(){
-        return " Le monde:  "+"\n Entree"+this.sasE.toString()+"Le nb de successeur:"+ sasE.nbSuccesseur()+"\n Activite"+this.gestEtapes+"Le nb de successeur:"+ getSasEntree().nbSuccesseur()+ "\n Sortie: "+this.sasS.toString()+"Le nb de successeur:"+ sasS.nbSuccesseur();
+        return " Le monde: \n"+getGestionnaireEtapes().toString();
     }
 }

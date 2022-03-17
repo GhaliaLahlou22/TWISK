@@ -47,7 +47,16 @@ public abstract class Etape implements Iterable<Etape> {
     public int nbSuccesseur(){
        return gest_Succ.nbEtapes();
     }
-    public abstract String toString();
+    public int getnbsucc(){
+        return nbSuccesseur();
+    }
+    public String getnamesucc() {
+        return getGestionnaireSuccesseurs().toString();
+    }
+    public  String toString(){
+        return "numero :"+getNum()+getNom();
+    }
+
 
 
     public abstract String toC();
