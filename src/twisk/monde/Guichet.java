@@ -14,7 +14,7 @@ public class Guichet extends Etape {
      */
     public Guichet(String nom){
         super(nom);
-        nbjetons=2;
+        this.nbjetons=2;
         this.nbSemaphore = FabriqueNumero.getInstance().getNumeroSemaphore();
     }
 
@@ -29,13 +29,15 @@ public class Guichet extends Etape {
     public boolean estUneActivite() {
         return false;
     }
-
+    public int getNbjetons(){
+        return nbjetons;
+    }
     public boolean estUnGuichet(){
         return true;
     }
     @Override
     public String toString(){
-     return this.nom+ " "+nbjetons+ " jetons";
+     return "Etape "+getNum()+" --> "+getNom()+" { "+getNbjetons()+" jetons ,semaphore "+getSemaphore()+" }";
     }
 
     @Override

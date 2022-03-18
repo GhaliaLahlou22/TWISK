@@ -23,6 +23,7 @@ public class GestionnaireEtapes implements Iterable<Etape> {
             this.liste_Steps.add(e);
         }
     }
+
     public int nbEtapes(){
         return liste_Steps.size();
     }
@@ -36,6 +37,10 @@ public class GestionnaireEtapes implements Iterable<Etape> {
     }
     @Override
     public String toString(){
-        return ""+this.liste_Steps;
+        StringBuilder str = new StringBuilder();
+        for(Etape step :getEtapes()){
+            str.append(step).append(step.getnbsucc()).append(" successeur(s) } => ").append(step.getnamesucc()).append(" \n");
+        }
+        return str.toString();
     }
 }
