@@ -47,6 +47,9 @@ public class Monde implements Iterable<Etape>{
     public SasEntree getSasEntree(){
         return sasE;
     }
+    public SasSortie getSasSortie(){
+        return sasS;
+    }
     public String toC(){
         StringBuilder s = new StringBuilder();
         s.append("#include <stdlib.h>\n" +

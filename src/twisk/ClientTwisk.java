@@ -6,7 +6,7 @@ import twisk.monde.Monde;
 import twisk.simulation.*;
 
 public class ClientTwisk {
-    public static void main(String[] args){
+    public static void main(String[] args) throws InterruptedException {
         System.out.println("************  TWISK  ***********");
         Monde m=new Monde();
 

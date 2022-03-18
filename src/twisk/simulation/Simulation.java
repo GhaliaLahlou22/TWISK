@@ -16,7 +16,7 @@ public class Simulation {
     /*
     Les fonctions
      */
-    public void simuler(Monde monde){
+    public void simuler(Monde monde) throws InterruptedException {
         monde.toC();
         KitC kit = new KitC();
         kit.creerEnvironnement();
@@ -24,5 +24,11 @@ public class Simulation {
         kit.compiler();
         kit.construireLaLibrairie();
         System.out.println(" "+monde.toString());
+        System.load("/tmp/twisk/libTwisk.so");
+
     }
+
+    public native int [] start_simulation(int nbEtapes, int nbServices, int nbClients, int []tabJetonsServices);
+    public native int [] ou_sont_les_clients(int nbEtapes, int nbClients);
+    public native void nettoyage();
 }

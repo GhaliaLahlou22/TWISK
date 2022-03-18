@@ -11,4 +11,7 @@ public class SasSortie extends Activite {
     public String toString() {
         return ""+ gest_Succ;
     }
+    public String toC() {
+        return "";
+    }
 }

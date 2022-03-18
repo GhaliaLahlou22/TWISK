@@ -11,6 +11,9 @@ public class SasEntree extends Activite {
     public String toString() {
         return  ""+this.gest_Succ;
     }
+    public String toC() {
+        return "";
+    }
 }
 
 
