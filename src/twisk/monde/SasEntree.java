@@ -5,11 +5,11 @@ public class SasEntree extends Activite {
     Les constructeurs
      */
     public SasEntree(){
-        super(" ");
+        super("entree");
     }
-        @Override
+    @Override
     public String toString() {
-        return  ""+this.gest_Succ;
+        return this.nom+" : "+nbSuccesseur()+" successeur(s) - "+gest_Succ.toString();
     }
     public String toC() {
         return "";

@@ -16,6 +16,7 @@ public class Monde implements Iterable<Etape>{
         this.gestEtapes =new GestionnaireEtapes();
         this.sasE =new SasEntree();
         this.sasS =new SasSortie();
+        this.ajouter(sasE,sasS);
     }
     /*
     Les fonctions
@@ -24,7 +25,8 @@ public class Monde implements Iterable<Etape>{
       this.sasE.ajouterSucceseur(etapes);
     }
     public void aCommeSortie(Etape... etapes){
-        this.sasS.ajouterSucceseur(etapes);
+        for (Etape e: etapes)
+            e.ajouterSucceseur(sasS);
     }
     public void ajouter(Etape...etapes){
         this.gestEtapes.ajouter(etapes);
@@ -62,8 +64,8 @@ public class Monde implements Iterable<Etape>{
         s.append(
                 "\nvoid simulation(int ids) " +
                         "{");
-        s.append(getSasEntree().toC());
-        s.append("}");
+        s.append(sasE.toC());
+        s.append("\n}");
         return s.toString();
     }
     @Override
@@ -72,6 +74,6 @@ public class Monde implements Iterable<Etape>{
     }
     @Override
     public String toString(){
-        return " Le monde: \n"+getGestionnaireEtapes().toString();
+        return gestEtapes.toString();
     }
 }

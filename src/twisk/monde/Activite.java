@@ -38,8 +38,8 @@ public class Activite extends Etape {
     }
 
     @Override
-    public String toString() {
-        return "Etape " +getNum()+ " --> "+getNom()+" { Le temps: "+getTemps()+", L'écart temps: "+getEcartTemps()+" ,";
+    public String toString(){
+        return this.nom+" : "+nbSuccesseur()+" successeur(s) - "+gest_Succ.toString();
     }
 
     @Override

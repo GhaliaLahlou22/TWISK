@@ -37,7 +37,7 @@ public class Guichet extends Etape {
     }
     @Override
     public String toString(){
-     return "Etape "+getNum()+" --> "+getNom()+" { "+getNbjetons()+" jetons ,semaphore "+getSemaphore()+" }";
+     return this.nom+" : "+nbSuccesseur()+" successeur(s) - "+gest_Succ.toString();
     }
 
     @Override

@@ -2,10 +2,7 @@ package twisk.tests;
 
 import twisk.monde.*;
 
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class EtapeTest {
@@ -36,7 +33,6 @@ public class EtapeTest {
         file_balancoire.ajouterSucceseur(Balancoir);
         Balancoir.ajouterSucceseur(plage,file_wc);
         file_wc.ajouterSucceseur(toillete);
-
         assertEquals(1,file_wc.nbSuccesseur());
         assertEquals(1,file_tob.nbSuccesseur());
         assertEquals(1,file_balancoire.nbSuccesseur());

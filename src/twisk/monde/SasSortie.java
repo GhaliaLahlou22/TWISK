@@ -5,11 +5,11 @@ public class SasSortie extends Activite {
     Les constructeurs
      */
     public SasSortie(){
-        super(" ");
+        super("sortie");
     }
     @Override
     public String toString() {
-        return ""+ gest_Succ;
+        return this.nom+" : "+nbSuccesseur()+" successeur(s)  "+gest_Succ.toString();
     }
     public String toC() {
         return "";
