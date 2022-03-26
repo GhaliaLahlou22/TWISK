@@ -11,8 +11,9 @@ public class SasEntree extends Activite {
     public String toString() {
         return this.nom+" : "+nbSuccesseur()+" successeur(s) - "+gest_Succ.toString();
     }
+    @Override
     public String toC() {
-        return "entrer("+this.nom+");\ndelai(8,3);\ntransfert("+this.nom+","+this.gest_Succ.getSuccesseur().getNom()+");\n"+this.gest_Succ.getSuccesseur().toC();
+        return "entrer("+this.nom+");\ndelai(4,3);\ntransfert("+this.nom+","+this.gest_Succ.getSuccesseur().getNom()+");\n"+this.gest_Succ.getSuccesseur().toC();
     }
 }
 

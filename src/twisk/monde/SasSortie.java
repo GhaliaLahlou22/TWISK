@@ -11,6 +11,7 @@ public class SasSortie extends Activite {
     public String toString() {
         return this.nom+" : "+nbSuccesseur()+" successeur(s)  "+gest_Succ.toString();
     }
+    @Override
     public String toC() {
         return "";
     }

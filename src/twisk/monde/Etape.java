@@ -27,8 +27,6 @@ public abstract class Etape implements Iterable<Etape> {
 
         this.gest_Succ.ajouter(e);
 
-        gest_Succ.ajouter(e);
-
 
     }
     public abstract boolean estUneActivite();
@@ -68,4 +66,9 @@ public abstract class Etape implements Iterable<Etape> {
         return gest_Succ;
 
     }
+    public String getDefineSema(){
+        return  null;
+    }
+
+    public abstract int getnbJetons();
 }

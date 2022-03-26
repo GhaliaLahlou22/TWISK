@@ -42,21 +42,18 @@ public class Activite extends Etape {
         return this.nom+" : "+nbSuccesseur()+" successeur(s) - "+gest_Succ.toString();
     }
 
-    @Override
-
     public String toC() {
         StringBuilder strC = new StringBuilder();
         strC.append("\ndelai("+temps+","+ecartTemps+");\n" +
                 "transfert("+this.nom+","+this.gest_Succ.getSuccesseur().getNom()+");\n"+gest_Succ.getSuccesseur().toC());
-        /*
-        strC.append("delai(").append(getTemps()).append(",").append(getEcartTemps()).append(");\n").append("int nb = (int)((rand()/(float)RAND_MAX)*").append(getGestionnaireSuccesseurs().nbEtapes()).append(");\n").append("switch(nb) {\n");
-        for(int i = 0; i < getGestionnaireSuccesseurs().nbEtapes(); ++i) {
-            strC.append("case ").append(i).append(": {").append("transfert(").append(getNom().replaceAll("\\s+", "")).append(",").append(getGestionnaireSuccesseurs().getEtapes().get(i).getNom().replaceAll("\\s+", "")).append(");\n").append(getGestionnaireSuccesseurs().getEtapes().get(i).toC()).append("break;\n}\n");
-        }
-        strC.append("}");
-         */
         return strC.toString();
     }
+
+    @Override
+    public String getDefineSema() {
+        return null;
+    }
+
     @Override
     public int getnbJetons() {
         return 0;

@@ -44,7 +44,7 @@ public class Simulation {
             cher_Clients = ou_sont_les_clients(nbEtapes, nbClients);
             for (etape = 0, numEtapes = 0; numEtapes < nbEtapes; ++numEtapes, ++etape) {
                 int nbClientsEtapes = cher_Clients[etape];
-                System.out.print("\nétapes " + numEtapes + " () " + cher_Clients[etape] + "  clients: ");
+                System.out.print("\nétapes " + numEtapes + " ("+ monde.getNomEtape(numEtapes)+") " + cher_Clients[etape] + "  clients: ");
                 for (int client = 1; client <= nbClientsEtapes; client++) {
                     System.out.printf(" " + cher_Clients[etape + client] + " ");
                 }

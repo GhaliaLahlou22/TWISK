@@ -16,6 +16,7 @@ public class Monde implements Iterable<Etape>{
         this.gestEtapes =new GestionnaireEtapes();
         this.sasE =new SasEntree();
         this.sasS =new SasSortie();
+        this.gestEtapes.ajouter(sasE,sasS);
     }
     /*
     Les fonctions
@@ -24,7 +25,8 @@ public class Monde implements Iterable<Etape>{
       this.sasE.ajouterSucceseur(etapes);
     }
     public void aCommeSortie(Etape... etapes){
-        this.sasS.ajouterSucceseur(etapes);
+        for (Etape e:etapes)
+            e.ajouterSucceseur(sasS);
     }
     public void ajouter(Etape...etapes){
         this.gestEtapes.ajouter(etapes);
@@ -50,19 +52,19 @@ public class Monde implements Iterable<Etape>{
     public SasSortie getSasSortie(){
         return sasS;
     }
+
     public String toC(){
         StringBuilder s = new StringBuilder();
-        s.append("#include <stdlib.h>\n" +
-                "#include <stdio.h>\n" +
-                "#include <time.h>\n" +
-                "#include \"def.h\" \n" );
-        for (Etape e : getGestionnaireEtapes()) {
-            s.append("#define ").append(e.getNom().replaceAll("\\s+", "")).append(" ").append(e.getNum()).append("\n");
+        s.append("#include <time.h>\n" +
+                "#include \"def.h\" \n");
+        for (Etape e : gestEtapes) {
+            s.append("#define "+e.getNom()+" "+e.getNum()+"\n");
+            if (e.estUnGuichet()){
+                s.append(e.getDefineSema()+"\n");
+            }
         }
-        s.append(
-                "\nvoid simulation(int ids) " +
-                        "{");
-        s.append(getSasEntree().toC());
+        s.append("\nvoid simulation(int ids){\n");
+        s.append(sasE.toC());
         s.append("}");
         return s.toString();
     }
@@ -73,5 +75,9 @@ public class Monde implements Iterable<Etape>{
     @Override
     public String toString(){
         return " Le monde: \n"+getGestionnaireEtapes().toString();
+    }
+
+    public String getNomEtape(int i){
+        return gestEtapes.getEtapes(i).getNom();
     }
 }

@@ -7,7 +7,7 @@ public class Guichet extends Etape {
     Les variables
      */
     private int nbjetons;
-    private int nbSemaphore ;
+    private int nbSemaphore = FabriqueNumero.getInstance().getNumeroSemaphore();;
 
     /*
     Les constructeurs
@@ -15,7 +15,7 @@ public class Guichet extends Etape {
     public Guichet(String nom){
         super(nom);
         this.nbjetons=2;
-        this.nbSemaphore = FabriqueNumero.getInstance().getNumeroSemaphore();
+
     }
 
     public Guichet(String nom,int nb){

@@ -17,7 +17,10 @@ public class GestionnaireSuccesseurs implements Iterable<Etape>{
         this.liste_etapes = new ArrayList<Etape>();
     }
     public void ajouter(Etape... etapes){
-        liste_etapes.addAll(Arrays.asList(etapes));
+
+        for (Etape e : etapes) {
+            this.liste_etapes.add(e);
+        }
 
     }
 

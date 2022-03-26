@@ -40,6 +40,6 @@ public class ClientTwisk {
         m.aCommeSortie(act1) ;
         Simulation sim = new Simulation();
         sim.simuler(m);
-
+        System.out.println("************* FIN *************");
     }
 }
