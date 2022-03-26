@@ -42,4 +42,7 @@ public class GestionnaireSuccesseurs implements Iterable<Etape>{
     public ArrayList<Etape> getEtapes() {
         return liste_etapes;
     }
+    public Etape getSuccesseur(){
+        return liste_etapes.get(0);
+    }
 }

@@ -27,6 +27,8 @@ public abstract class Etape implements Iterable<Etape> {
 
         this.gest_Succ.ajouter(e);
 
+        gest_Succ.ajouter(e);
+
 
     }
     public abstract boolean estUneActivite();
@@ -48,9 +50,13 @@ public abstract class Etape implements Iterable<Etape> {
     public int getnbsucc(){
         return nbSuccesseur();
     }
-    public  String toString(){
-        return this.nom +"successeur(s): "+getGestionnaireSuccesseurs().toString();
+    public String getnamesucc() {
+        return getGestionnaireSuccesseurs().toString();
     }
+    public  String toString(){
+        return "numero :"+getNum()+getNom();
+    }
+
 
 
     public abstract String toC();

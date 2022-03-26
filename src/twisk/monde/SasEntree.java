@@ -12,7 +12,7 @@ public class SasEntree extends Activite {
         return this.nom+" : "+nbSuccesseur()+" successeur(s) - "+gest_Succ.toString();
     }
     public String toC() {
-        return "";
+        return "entrer("+this.nom+");\ndelai(8,3);\ntransfert("+this.nom+","+this.gest_Succ.getSuccesseur().getNom()+");\n"+this.gest_Succ.getSuccesseur().toC();
     }
 }
 

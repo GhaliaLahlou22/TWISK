@@ -42,15 +42,24 @@ public class Guichet extends Etape {
 
     @Override
     public String toC() {
-        return "P(" + "ids" + "," + getSemaphore() + "); \n" +
-                "transfert(" + this.getNom().replaceAll("\\s+", "") + "," + getSuivant().getNom().replaceAll("\\s+", "") + "); \n" +
-                "delai(" + getSuivant().getTemps() + "," + getSuivant().getEcartTemps() + ");\n" +
-                "V(" + "ids" + "," + getSemaphore() + ");\n" + getSuivant().toC();
+        return "P(" + "ids" + "," + getSemaphore()+ "); \n" +
+                "transfert("+this.nom+","+gest_Succ.getSuccesseur().getNom()+");\n"+
+                "delai(6,3);\n" +
+                "V(ids," + getSemaphore()+ ");\n" + gest_Succ.getSuccesseur().toC();
     }
     public ActiviteRestreinte getSuivant() {
         return (ActiviteRestreinte) getGestionnaireSuccesseurs().getEtapes().get(0);
     }
-    private int getSemaphore() {
-        return nbSemaphore;
+    public String getSemaphore(){
+        return "num_sem_guichet" +nbSemaphore;
     }
+
+    @Override
+    public String getDefineSema(){
+        return "#define "+getSemaphore() +" "+nbSemaphore;
+    }
+    public int getnbJetons(){
+        return nbjetons;
+    }
+
 }
