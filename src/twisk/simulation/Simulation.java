@@ -5,17 +5,24 @@ import twisk.outils.KitC;
 
 
 public class Simulation {
-    /**
-     * Constructeur de Simulation
-     */
+
+    int[] tab_Clients;
+    int[] cher_Clients;
+    int[] tabJetonsGuichet ;
+    int nbEtapes ;
+    int nbGuichets ;
+    int nbClients = 6;
+    boolean ended = false;
+    int etape, numEtapes;
+    /*
+   Les constructeurs
+    */
+
     public Simulation(){
 
     }
-
-    /**
-     * Fonction qui fais la simulation du monde
-     * @param monde
-     * @throws InterruptedException
+    /*
+    Les fonctions
      */
     public void simuler(Monde monde) throws InterruptedException {
         monde.toC();
@@ -26,14 +33,10 @@ public class Simulation {
         kit.construireLaLibrairie();
         System.out.println(" "+monde.toString());
         System.load("/tmp/twisk/libTwisk.so") ;
-        int[] tab_Clients;
-        int[] cher_Clients;
         int[] tabJetonsGuichet = this.Nbjetons(monde);
         int nbEtapes = monde.nbEtapes();
         int nbGuichets = monde.nbGuichet();
-        int nbClients = 6;
-        boolean ended = false;
-        int etape, numEtapes;
+
         tab_Clients = start_simulation(nbEtapes, nbGuichets, nbClients, tabJetonsGuichet);
         System.out.println("Les clients: ");
         for (int i = 0; i < nbClients; i++) {
@@ -58,11 +61,7 @@ public class Simulation {
         nettoyage();
     }
 
-    /**
-     * Fonction qui incremonte le  nombre de jetons de chaque guichet du monde
-     * @param monde
-     * @return
-     */
+
     public int[] Nbjetons(Monde monde){
         int[] jetons=new int[monde.nbGuichet()];
         int cpt=0;
@@ -74,26 +73,11 @@ public class Simulation {
         }
         return jetons;
     }
-
-    /**
-     *
-     * @param nbEtapes
-     * @param nbServices
-     * @param nbClients
-     * @param tabJetonsServices
-     */
     public native int [] start_simulation(int nbEtapes, int nbServices, int nbClients, int []tabJetonsServices);
-
-    /**
-     *
-     * @param nbEtapes
-     * @param nbClients
-     * @return les clients
-     */
     public native int [] ou_sont_les_clients(int nbEtapes, int nbClients);
-
-    /**
-     * Fonction qui fais le nettoyage
-     */
     public native void nettoyage();
+
+    public void setNbClients(int i) {
+        this.nbClients= nbClients ;
+    }
 }

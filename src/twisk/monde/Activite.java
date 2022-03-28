@@ -59,8 +59,8 @@ public class Activite extends Etape {
 
     public String toC() {
         StringBuilder strC = new StringBuilder();
-        strC.append("\ndelai("+temps+","+ecartTemps+");\n" +
-                "transfert("+this.nom+","+this.gest_Succ.getSuccesseur().getNom()+");\n"+gest_Succ.getSuccesseur().toC());
+        strC.append("\ndelai("+getTemps()+","+getEcartTemps()+");\n" +
+                "transfert("+this.getNom()+","+this.gest_Succ.getSuccesseur().getNom()+");\n"+gest_Succ.getSuccesseur().toC());
         return strC.toString();
     }
 

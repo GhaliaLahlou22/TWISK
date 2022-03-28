@@ -25,11 +25,11 @@ public class Monde implements Iterable<Etape>{
      * @param etapes
      */
     public void aCommeEntree(Etape... etapes){
-      this.sasE.ajouterSucceseur(etapes);
+      this.sasE.ajouterSuccesseur(etapes);
     }
     public void aCommeSortie(Etape... etapes){
         for (Etape e:etapes)
-            e.ajouterSucceseur(sasS);
+            e.ajouterSuccesseur(sasS);
     }
 
     /**

@@ -28,11 +28,11 @@ public class EtapeTest {
 
     @org.junit.jupiter.api.Test
     void ajouterSucceseur() {
-        file_tob.ajouterSucceseur(toboggan);
-        toboggan.ajouterSucceseur(plage);
-        file_balancoire.ajouterSucceseur(Balancoir);
-        Balancoir.ajouterSucceseur(plage,file_wc);
-        file_wc.ajouterSucceseur(toillete);
+        file_tob.ajouterSuccesseur(toboggan);
+        toboggan.ajouterSuccesseur(plage);
+        file_balancoire.ajouterSuccesseur(Balancoir);
+        Balancoir.ajouterSuccesseur(plage,file_wc);
+        file_wc.ajouterSuccesseur(toillete);
         assertEquals(1,file_wc.nbSuccesseur());
         assertEquals(1,file_tob.nbSuccesseur());
         assertEquals(1,file_balancoire.nbSuccesseur());

@@ -23,7 +23,7 @@ public class SasEntree extends Activite {
      */
     @Override
     public String toC() {
-        return "entrer("+this.nom+");\ndelai(4,3);\ntransfert("+this.nom+","+this.gest_Succ.getSuccesseur().getNom()+");\n"+this.gest_Succ.getSuccesseur().toC();
+        return "entrer("+getNom()+");\ndelai(4,3);\ntransfert("+this.nom+","+this.gest_Succ.getSuccesseur().getNom()+");\n"+this.gest_Succ.getSuccesseur().toC();
     }
 }
 
