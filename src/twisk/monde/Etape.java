@@ -50,41 +50,17 @@ public abstract class Etape implements Iterable<Etape> {
     public String getNom(){
         String name = this.nom;
         name = name.replaceAll(" " , "_");
-        name = name.replaceAll("é" , "e");
-        name = name.replaceAll("è" , "e");
-        name = name.replaceAll("à" , "a");
-        name = name.replaceAll("â" , "a");
-        name = name.replaceAll("á" ,"a");
-        name = name.replaceAll("å","a");
-        name = name.replaceAll("ã","a");
-        name = name.replaceAll("ø" , "o");
+        name = name.replaceAll("[~^'¶§þß] " , "_");
+        name = name.replaceAll("[éëêè&£]" , "e");
+        name = name.replaceAll("[âåàã@]" , "a");
+        name = name.replaceAll("[øØð]" , "o");
         name = name.replaceAll("æ" , "ae");
-        name = name.replaceAll("ç" , "c");
-        name = name.replaceAll("î" , "i");
+        name = name.replaceAll("[ç©]" , "c");
+        name = name.replaceAll("[îïì]" , "i");
         name = name.replaceAll("ñ" , "n");
-        name = name.replaceAll("©" , "c");
-        name = name.replaceAll("¶" , "-");
-        name = name.replaceAll("ì" , "i");
-        name = name.replaceAll("š" , "š");
-        name = name.replaceAll("ï" , "i");
+        name = name.replaceAll("š" , "s");
         name = name.replaceAll("ý" , "y");
-        name = name.replaceAll("â" , "a");
-        name = name.replaceAll("Ø" , "o");
-        name = name.replaceAll("ê","e");
-        name = name.replaceAll("ë","e");
-        name = name.replaceAll("é","e");
-        name = name.replaceAll("ð","o");
-        name = name.replaceAll("ß","B");
         name = name.replaceAll("ù","u");
-        name = name.replaceAll("þ","b");
-        name = name.replaceAll("$","s");
-        name = name.replaceAll("£","e");
-        name = name.replaceAll("@","a");
-        name = name.replaceAll("§","s");
-        name = name.replaceAll("'","-");
-        name = name.replaceAll("~","_");
-        name = name.replaceAll("&","et");
-        name = name.replaceAll("entrees","entree");
 
         return name;
     }

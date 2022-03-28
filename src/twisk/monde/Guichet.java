@@ -61,7 +61,7 @@ public class Guichet extends Etape {
     @Override
     public String toC() {
         return "P(" + "ids" + "," + getSemaphore()+ "); \n" +
-                "transfert("+this.getNom()+","+gest_Succ.getSuccesseur().getNom()+");\n"+
+                "transfert("+this.getNom()+this.getNum()+","+gest_Succ.getSuccesseur().getNom()+this.gest_Succ.getSuccesseur().getNum()+");\n"+
                 "delai(6,3);\n" +
                 "V(ids," + getSemaphore()+ ");\n" + gest_Succ.getSuccesseur().toC();
     }

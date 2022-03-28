@@ -1,5 +1,6 @@
 package twisk.monde;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Monde implements Iterable<Etape>{
@@ -9,6 +10,7 @@ public class Monde implements Iterable<Etape>{
     private GestionnaireEtapes gestEtapes;
     private SasEntree sasE;
     private SasSortie sasS;
+    public ArrayList<String> listNom ;
 
     /**
      * Constructeur du monde
@@ -91,11 +93,12 @@ public class Monde implements Iterable<Etape>{
      * @return
      */
     public String toC(){
+
         StringBuilder s = new StringBuilder();
         s.append("#include <time.h>\n" +
                 "#include \"def.h\" \n");
         for (Etape e : gestEtapes) {
-            s.append("#define "+e.getNom()+" "+e.getNum()+"\n");
+            s.append("#define "+e.getNom()+e.getNum()+" "+e.getNum()+"\n");
             if (e.estUnGuichet()){
                 s.append(e.getDefineSema()+"\n");
             }
@@ -132,4 +135,6 @@ public class Monde implements Iterable<Etape>{
     public String getNomEtape(int i){
         return gestEtapes.getEtapes(i).getNom();
     }
+
+
 }

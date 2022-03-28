@@ -5,7 +5,9 @@ import twisk.outils.KitC;
 
 
 public class Simulation {
-
+    /**
+     * Variables
+     */
     int[] tab_Clients;
     int[] cher_Clients;
     int[] tabJetonsGuichet ;
@@ -14,15 +16,19 @@ public class Simulation {
     int nbClients = 6;
     boolean ended = false;
     int etape, numEtapes;
-    /*
-   Les constructeurs
-    */
 
+
+    /**
+     * Constructeurs de Simulation
+     */
     public Simulation(){
 
     }
-    /*
-    Les fonctions
+
+    /**
+     * fonction qui fais la simulation de monde
+     * @param monde
+     * @throws InterruptedException
      */
     public void simuler(Monde monde) throws InterruptedException {
         monde.toC();
@@ -33,9 +39,9 @@ public class Simulation {
         kit.construireLaLibrairie();
         System.out.println(" "+monde.toString());
         System.load("/tmp/twisk/libTwisk.so") ;
-        int[] tabJetonsGuichet = this.Nbjetons(monde);
-        int nbEtapes = monde.nbEtapes();
-        int nbGuichets = monde.nbGuichet();
+        tabJetonsGuichet = this.Nbjetons(monde);
+        nbEtapes = monde.nbEtapes();
+        nbGuichets = monde.nbGuichet();
 
         tab_Clients = start_simulation(nbEtapes, nbGuichets, nbClients, tabJetonsGuichet);
         System.out.println("Les clients: ");
@@ -73,11 +79,93 @@ public class Simulation {
         }
         return jetons;
     }
+
+    /**
+     * Setter de nombre de cliens
+     * @param nbClients
+     */
+    public void setNbClients(int nbClients) {
+        this.nbClients= nbClients ;
+    }
+
+    /**
+     * Getter de nombre de clients
+     * @return
+     */
+    public int getNbClients() {
+        return nbClients;
+    }
+
+    /**
+     * fonction qui lance la simulation
+     * @param nbEtapes
+     * @param nbServices
+     * @param nbClients
+     * @param tabJetonsServices
+     * @return
+     */
     public native int [] start_simulation(int nbEtapes, int nbServices, int nbClients, int []tabJetonsServices);
+
+    /**
+     * fonction qui indique l'amplacement des clients
+     * @param nbEtapes
+     * @param nbClients
+     * @return
+     */
     public native int [] ou_sont_les_clients(int nbEtapes, int nbClients);
+
+    /**
+     * fonction qui nettoye le monde
+     */
     public native void nettoyage();
 
-    public void setNbClients(int i) {
-        this.nbClients= nbClients ;
+    /**
+     * Getter des jetons de guichet
+     * @return
+     */
+    public int[] getTabJetonsGuichet() {
+        return tabJetonsGuichet;
+    }
+
+    /**
+     * Getter de nombre de guichet
+     * @return
+     */
+    public  int getNbGuichets(){
+        return nbGuichets;
+    }
+
+    /**
+     * Setter de nombre de guichet
+     * @param nbg
+     */
+    public  void setNbGuichets(int nbg){
+         this.nbGuichets = nbg;
+    }
+
+    /**
+     * Getter de la table des clients
+     * @return
+     */
+    public int[] getTab_Clients() {
+        return tab_Clients;
+    }
+
+    /**
+     * Getter de l'amplacement des clients
+     * @return
+     */
+    public int[] getCher_Clients() {
+        return cher_Clients;
+    }
+
+    /**
+     * Setter des jetons
+     * @param tabJetonsGuichet
+     */
+
+
+    public void setTabJetonsGuichet(int[] tabJetonsGuichet) {
+        this.tabJetonsGuichet = tabJetonsGuichet;
     }
 }
