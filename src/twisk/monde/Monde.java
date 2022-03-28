@@ -3,14 +3,15 @@ package twisk.monde;
 import java.util.Iterator;
 
 public class Monde implements Iterable<Etape>{
-    /*
-    Les variables
+    /**
+     * Les variables
      */
     private GestionnaireEtapes gestEtapes;
     private SasEntree sasE;
     private SasSortie sasS;
-    /*
-    Les constructeurs
+
+    /**
+     * Constructeur du monde
      */
     public Monde(){
         this.gestEtapes =new GestionnaireEtapes();
@@ -18,8 +19,10 @@ public class Monde implements Iterable<Etape>{
         this.sasS =new SasSortie();
         this.gestEtapes.ajouter(sasE,sasS);
     }
-    /*
-    Les fonctions
+
+    /**
+     * Fonction qui ajoute les entree
+     * @param etapes
      */
     public void aCommeEntree(Etape... etapes){
       this.sasE.ajouterSucceseur(etapes);
@@ -28,12 +31,27 @@ public class Monde implements Iterable<Etape>{
         for (Etape e:etapes)
             e.ajouterSucceseur(sasS);
     }
+
+    /**
+     * Fonctions qui ajoutes les etapes
+     * @param etapes
+     */
     public void ajouter(Etape...etapes){
         this.gestEtapes.ajouter(etapes);
     }
+
+    /**
+     * Fonction qui retourne le nombre de d'etapes
+     * @return
+     */
     public int nbEtapes(){
         return gestEtapes.nbEtapes();
     }
+
+    /**
+     * Fonctions qui retourne le nombres de guichet
+     * @return
+     */
     public int nbGuichet(){
         int i=0;
         for(Etape etape: gestEtapes){
@@ -43,16 +61,35 @@ public class Monde implements Iterable<Etape>{
         }
         return i;
     }
+
+    /**
+     *  Getter de Gestionnaire Etapes
+     * @return gestionnaire d'etape du monde
+     */
     public GestionnaireEtapes getGestionnaireEtapes() {
         return gestEtapes;
     }
+
+    /**
+     * Getter de sas entree
+     * @return
+     */
     public SasEntree getSasEntree(){
         return sasE;
     }
+
+    /**
+     * Getter de sas sortie
+     * @return
+     */
     public SasSortie getSasSortie(){
         return sasS;
     }
 
+    /**
+     * Fonction qui genere le code c
+     * @return
+     */
     public String toC(){
         StringBuilder s = new StringBuilder();
         s.append("#include <time.h>\n" +
@@ -68,15 +105,30 @@ public class Monde implements Iterable<Etape>{
         s.append("}");
         return s.toString();
     }
+
+    /**
+     * Iterrateur qui parcours toutes les etapes
+     * @return
+     */
     @Override
     public Iterator<Etape> iterator() {
         return this.gestEtapes.iterator();
     }
+
+    /**
+     * Fonction qui affiche  le monde
+     * @return
+     */
     @Override
     public String toString(){
         return " Le monde: \n"+getGestionnaireEtapes().toString();
     }
 
+    /**
+     * Getter de nom d'etape
+     * @param i
+     * @return le nom de chaque etape
+     */
     public String getNomEtape(int i){
         return gestEtapes.getEtapes(i).getNom();
     }

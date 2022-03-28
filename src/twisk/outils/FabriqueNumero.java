@@ -6,16 +6,21 @@ public class FabriqueNumero {
     private int cptEtape;
     private int cptSemaphore;
 
-
+    /**
+     * Constructeur de FabriqueNumero
+     */
     private FabriqueNumero() {
         cptEtape = 0;
         cptSemaphore = 1;
-
     }
     public static FabriqueNumero getInstance() {
         return instance;
     }
 
+    /**
+     * Getter de  NumeroEtape
+     * @return Numero de l'etape
+     */
     public int getNumeroEtape() {
         assert (cptEtape >= 0) : " Bug ! , cpt negatif ";
         cptEtape++;
@@ -26,6 +31,10 @@ public class FabriqueNumero {
         cptSemaphore = 1;
     }
 
+    /**
+     * Getter de NumeroSemaphore
+     * @return  Numero de semaphore
+     */
     public int getNumeroSemaphore() {
         assert (cptSemaphore > 0) : "Bug ! , cpt inferieur a 1 ";
         cptSemaphore++;

@@ -5,17 +5,17 @@ import twisk.outils.KitC;
 
 
 public class Simulation {
-
-
-    /*
-   Les constructeurs
-    */
-
+    /**
+     * Constructeur de Simulation
+     */
     public Simulation(){
 
     }
-    /*
-    Les fonctions
+
+    /**
+     * Fonction qui fais la simulation du monde
+     * @param monde
+     * @throws InterruptedException
      */
     public void simuler(Monde monde) throws InterruptedException {
         monde.toC();
@@ -58,7 +58,11 @@ public class Simulation {
         nettoyage();
     }
 
-
+    /**
+     * Fonction qui incremonte le  nombre de jetons de chaque guichet du monde
+     * @param monde
+     * @return
+     */
     public int[] Nbjetons(Monde monde){
         int[] jetons=new int[monde.nbGuichet()];
         int cpt=0;
@@ -70,7 +74,26 @@ public class Simulation {
         }
         return jetons;
     }
+
+    /**
+     *
+     * @param nbEtapes
+     * @param nbServices
+     * @param nbClients
+     * @param tabJetonsServices
+     */
     public native int [] start_simulation(int nbEtapes, int nbServices, int nbClients, int []tabJetonsServices);
+
+    /**
+     *
+     * @param nbEtapes
+     * @param nbClients
+     * @return les clients
+     */
     public native int [] ou_sont_les_clients(int nbEtapes, int nbClients);
+
+    /**
+     * Fonction qui fais le nettoyage
+     */
     public native void nettoyage();
 }
