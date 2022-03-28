@@ -30,7 +30,7 @@ public class Simulation {
      * @param monde
      * @throws InterruptedException
      */
-    public void simuler(Monde monde) throws InterruptedException {
+    public void simuler(Monde monde) {
         monde.toC();
         KitC kit = new KitC();
         kit.creerEnvironnement();
@@ -62,7 +62,11 @@ public class Simulation {
                     ended = nbClientsEtapes == nbClients;
                 }
             }
-            Thread.sleep(1000);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
         nettoyage();
     }
