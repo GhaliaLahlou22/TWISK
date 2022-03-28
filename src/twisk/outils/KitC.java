@@ -8,10 +8,16 @@ import java.nio.file.Paths;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 public class KitC {
-
+    /**
+     * Constructeur de KitC
+     */
     public KitC(){
 
     }
+
+    /**
+     * Fonction qui cree l'environnement de twisk dans /tmp
+     */
     public void creerEnvironnement(){
         try {
         // création du répertoire twisk sous /tmp. Ne déclenche pas d’erreur si le répertoire existe déjà
@@ -29,6 +35,12 @@ public class KitC {
 
         }
 
+    /**
+     * Fonction qui copie les fichiers programmeC.o, def.h et codeNatif.o sous /tmp/twisk.
+     * @param source
+     * @param dest
+     * @throws IOException
+     */
     private void copier(InputStream source, File dest) throws IOException {
         InputStream sourceFile = source;
         OutputStream destinationFile = new FileOutputStream(dest) ;
@@ -42,6 +54,10 @@ public class KitC {
         sourceFile.close();
     }
 
+    /**
+     * Fonction qui cree la classe client.c dans twisk
+     * @param codeC
+     */
     public void creerFichier(String codeC) {
         try {
             new File("/tmp/twisk/client.c");
@@ -54,6 +70,9 @@ public class KitC {
         }
     }
 
+    /**
+     * Fonction qui compile le code c automatiquement
+     */
     public void compiler(){
         try {
 
@@ -75,6 +94,9 @@ public class KitC {
         }
     }
 
+    /**
+     * Fonction qui cree la librairie libTwisk.so
+     */
    public void construireLaLibrairie(){
        try {
            Runtime runtime = Runtime.getRuntime();
