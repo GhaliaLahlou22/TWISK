@@ -16,7 +16,8 @@ public class Simulation {
     int nbClients = 6;
     boolean ended = false;
     int etape, numEtapes;
-
+     KitC kit ;
+     GestionnaireClients gestClients ;
 
     /**
      * Constructeurs de Simulation
@@ -32,7 +33,7 @@ public class Simulation {
      */
     public void simuler(Monde monde) {
         monde.toC();
-        KitC kit = new KitC();
+         kit = new KitC();
         kit.creerEnvironnement();
         kit.creerFichier(monde.toC());
         kit.compiler();
