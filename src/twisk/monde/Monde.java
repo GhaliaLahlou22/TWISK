@@ -136,5 +136,9 @@ public class Monde implements Iterable<Etape>{
         return gestEtapes.getEtapes(i).getNom();
     }
 
+    public  Etape getEtape(int i){
+        return gestEtapes.getEtapes(i);
+    }
+
 
 }

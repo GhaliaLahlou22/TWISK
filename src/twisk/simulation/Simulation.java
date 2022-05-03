@@ -43,8 +43,9 @@ public class Simulation {
         tabJetonsGuichet = this.Nbjetons(monde);
         nbEtapes = monde.nbEtapes();
         nbGuichets = monde.nbGuichet();
+        gestClients = new GestionnaireClients();
 
-        tab_Clients = start_simulation(nbEtapes, nbGuichets, nbClients, tabJetonsGuichet);
+                tab_Clients = start_simulation(nbEtapes, nbGuichets, nbClients, tabJetonsGuichet);
         System.out.println("Les clients: ");
         for (int i = 0; i < nbClients; i++) {
             System.out.print(" "+tab_Clients[i]);
@@ -55,8 +56,9 @@ public class Simulation {
             for (etape = 0, numEtapes = 0; numEtapes < nbEtapes; ++numEtapes, ++etape) {
                 int nbClientsEtapes = cher_Clients[etape];
                 System.out.print("\nétapes " + numEtapes + " ("+ monde.getNomEtape(numEtapes)+") " + cher_Clients[etape] + "  clients: ");
-                for (int client = 1; client <= nbClientsEtapes; client++) {
+                for (int client = 0; client <= nbClientsEtapes; client++) {
                     System.out.printf(" " + cher_Clients[etape + client] + " ");
+                  //  gestClients.allerA(cher_Clients[getNbClients()] , monde.getEtape(client), client);
                 }
                 etape += nbClients;
                 if (numEtapes == 1) {
