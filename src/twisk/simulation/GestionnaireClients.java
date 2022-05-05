@@ -10,9 +10,6 @@ public class GestionnaireClients {
      private ArrayList<Client> clients ;
      int nbClients ;
 
-    public GestionnaireClients(){
-
-    }
     public GestionnaireClients(int nbClients){
         clients = new ArrayList<>(nbClients);
     }

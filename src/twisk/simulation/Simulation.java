@@ -33,7 +33,7 @@ public class Simulation {
      */
     public void simuler(Monde monde) {
         monde.toC();
-         kit = new KitC();
+        kit = new KitC();
         kit.creerEnvironnement();
         kit.creerFichier(monde.toC());
         kit.compiler();
@@ -43,7 +43,7 @@ public class Simulation {
         tabJetonsGuichet = this.Nbjetons(monde);
         nbEtapes = monde.nbEtapes();
         nbGuichets = monde.nbGuichet();
-        gestClients = new GestionnaireClients();
+        gestClients = new GestionnaireClients(nbClients);
 
                 tab_Clients = start_simulation(nbEtapes, nbGuichets, nbClients, tabJetonsGuichet);
         System.out.println("Les clients: ");
@@ -58,7 +58,7 @@ public class Simulation {
                 System.out.print("\nétapes " + numEtapes + " ("+ monde.getNomEtape(numEtapes)+") " + cher_Clients[etape] + "  clients: ");
                 for (int client = 0; client <= nbClientsEtapes; client++) {
                     System.out.printf(" " + cher_Clients[etape + client] + " ");
-                  //  gestClients.allerA(cher_Clients[getNbClients()] , monde.getEtape(client), client);
+                    gestClients.allerA(cher_Clients[getNbClients()] , monde.getEtape(numEtapes), client);
                 }
                 etape += nbClients;
                 if (numEtapes == 1) {
