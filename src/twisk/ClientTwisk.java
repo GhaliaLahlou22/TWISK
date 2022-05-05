@@ -10,12 +10,17 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class  ClientTwisk {
-    public static void main(String[] args){
+    public static void main(String[] args) {
+        ClientTwisk client=new ClientTwisk();
+    }
+
+    ClientTwisk(){
 
         Monde m=new Monde();
-        ClassLoaderPerso ClassLoader  = new ClassLoaderPerso(ClientTwisk.class.getClassLoader());
+        ClassLoaderPerso ClassLoader  = new ClassLoaderPerso(this.getClass().getClassLoader());
+
         try {
-            Class<?> simul =  ClassLoader.loadClass("twisk.simulation.simulation");
+            Class<?> simul =  ClassLoader.loadClass("twisk.simulation.Simulation");
             Object  objSimulation = simul.getDeclaredConstructor().newInstance();
             Method setNbClients = simul.getDeclaredMethod("setNbClients" , int.class);
             Method sim =simul.getDeclaredMethod("simuler" , twisk.monde.Monde.class);
@@ -43,7 +48,7 @@ public class  ClientTwisk {
         System.out.println("\n************* FIN *************");
 
 
-     /*   Monde monde = new Monde();
+       /* Monde monde = new Monde();
 
         Activite zoo = new Activite("balade au zoo", 3, 1);
         Guichet g = new Guichet("accès au toboggan", 2);
