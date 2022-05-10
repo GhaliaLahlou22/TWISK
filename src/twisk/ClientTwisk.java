@@ -5,58 +5,56 @@ import twisk.monde.*;
 import twisk.monde.Monde;
 import twisk.outils.ClassLoaderPerso;
 import twisk.simulation.*;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class  ClientTwisk {
     public static void main(String[] args) {
-       // ClientTwisk client=new ClientTwisk();
-    }
-
-    ClientTwisk(Monde m){
-
-       // Monde m=new Monde();
+        //ClientTwisk client=new ClientTwisk();
 
 
+        // private static void simulate(){
+        Monde m = new Monde();
         try {
-            ClassLoaderPerso ClassLoader  = new ClassLoaderPerso(ClientTwisk.class.getClassLoader());
-            Class<?> simul =  ClassLoader.loadClass("twisk.simulation.Simulation");
+            ClassLoaderPerso ClassLoader = new ClassLoaderPerso(ClientTwisk.class.getClassLoader());
+            Class<?> simul = ClassLoader.loadClass("twisk.simulation.Simulation");
 
-            Object  objSimulation = simul.getDeclaredConstructor().newInstance();
-            Method setNbClients = simul.getDeclaredMethod("setNbClients" , int.class);
+            Object objSimulation = simul.getDeclaredConstructor().newInstance();
+            Method setNbClients = simul.getDeclaredMethod("setNbClients", int.class);
             //Method setNbClients = simul.getMethod("setNbClients" , int.class);
 
-            Method sim =simul.getDeclaredMethod("simuler" , twisk.monde.Monde.class);
+            Method sim = simul.getDeclaredMethod("simuler", Monde.class);
 
-            setNbClients.invoke(objSimulation,6);
-            sim.invoke(objSimulation,m);
-        } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e)
+            setNbClients.invoke(objSimulation, 6);
+            sim.invoke(objSimulation, m);
+        } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+            // throw new RuntimeException(e);
+            e.printStackTrace();
+        }
 
-    {
-        throw new RuntimeException(e);
-    }
-        Guichet guichet = new Guichet("ticket", 2) ;
-        Activite act1 = new ActiviteRestreinte("toboggan", 2, 1) ;
 
-        Etape etape1 = new Activite("musee") ;
-        Etape etape2 = new Activite("boutique") ;
+        Guichet guichet = new Guichet("ticket", 2);
+        Activite act1 = new ActiviteRestreinte("toboggan", 2, 1);
 
-        etape1.ajouterSuccesseur(etape2); ;
-        etape2.ajouterSuccesseur(guichet) ;
+        Etape etape1 = new Activite("musee");
+        Etape etape2 = new Activite("boutique");
+
+        etape1.ajouterSuccesseur(etape2);
+        ;
+        etape2.ajouterSuccesseur(guichet);
         guichet.ajouterSuccesseur(act1);
 
-        m.ajouter(etape1, etape2) ;
-        m.ajouter(act1) ;
-        m.ajouter(guichet) ;
+        m.ajouter(etape1, etape2);
+        m.ajouter(act1);
+        m.ajouter(guichet);
 
         m.aCommeEntree(etape1);
-        m.aCommeSortie(act1) ;
+        m.aCommeSortie(act1);
         Simulation sim = new Simulation();
         sim.simuler(m);
         System.out.println("\n************* FIN *************");
-
-
+    }
+}
        /* Monde monde = new Monde();
 
         Activite zoo = new Activite("balade au zoo", 3, 1);
@@ -77,5 +75,5 @@ public class  ClientTwisk {
 
         Simulation simu = new Simulation();
         simu.simuler(monde);*/
-    }
-}
+   // }
+
