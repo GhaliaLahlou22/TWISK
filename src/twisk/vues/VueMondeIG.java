@@ -19,16 +19,7 @@ public class VueMondeIG extends Pane implements Observateur {
      */
     public VueMondeIG(MondeIG monde) {
         this.Monde = monde;
-        for (EtapeIG etape : Monde) {
-            VueActiviteIG vue = new VueActiviteIG(Monde, etape);
-            this.getChildren().add(vue);
-            for(PointDeControleIG ptc : etape) {
-                VuePointDeControleIG point = new VuePointDeControleIG(Monde, ptc, etape);
-                this.getChildren().add(point);
-            }
-            this.setOnDragOver(new EcouteurDrapOver());
-            this.setOnDragDropped(new EcouteurDragDessin(monde, this));
-        }
+        reagir();
         this.Monde.ajouterObservateur(this);
     }
 
@@ -46,8 +37,9 @@ public class VueMondeIG extends Pane implements Observateur {
         }
         for (EtapeIG etape : Monde) {
             VueActiviteIG vue = new VueActiviteIG(Monde, etape);
+            VueGuichetIG vueg =new VueGuichetIG(Monde,etape);
           //  setOnAction(new EcouteurDeselection(monde));
-            this.getChildren().add(vue);
+            this.getChildren().addAll(vue,vueg);
             for(PointDeControleIG ptc : etape){
                 VuePointDeControleIG point=new VuePointDeControleIG(Monde,ptc,etape);
                 this.getChildren().add(point);

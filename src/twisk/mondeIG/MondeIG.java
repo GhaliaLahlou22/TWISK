@@ -30,7 +30,9 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG>{
 
         String identif =fabid.getIdentifiantEtape();
         EtapeIG activ =new ActiviteIG("activite"+identif,identif,60,60);
+        EtapeIG guich =new GuichetIG("guichet"+identif,identif,60,100);
         etapes.put(identif,activ);
+        etapes.put(identif,guich);
     }
 
     /**
@@ -42,8 +44,15 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG>{
             String identifiant =fabid.getIdentifiantEtape();
             EtapeIG act =new ActiviteIG("activite"+identifiant,identifiant,60,60);
             etapes.put(identifiant,act);
-            this.notifierObservateurs();
+           // this.notifierObservateurs();
         }
+            if(type.equals("guichet")){
+                String identifiant =fabid.getIdentifiantEtape();
+                EtapeIG gui =new GuichetIG("guichet"+identifiant,identifiant,60,100);
+                etapes.put(identifiant,gui);
+               // this.notifierObservateurs();
+        }
+        this.notifierObservateurs();
     }
 
     /**

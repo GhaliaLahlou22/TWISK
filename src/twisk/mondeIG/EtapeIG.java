@@ -59,12 +59,17 @@ public abstract class EtapeIG implements Iterable<PointDeControleIG>{
     }
     /**
      * Fonction qui valide si une etape est une activite
-     * @return
+     * @return FALSE
      */
     public boolean estUneActivite(){
         return false;
     }
+    /*
+     * Fonction qui valide si une etape est un Guichet
+     * @return FALSE
 
+     */
+     public boolean estUnGuichet(){return false;}
     /**
      * Getter de temps
      * @return

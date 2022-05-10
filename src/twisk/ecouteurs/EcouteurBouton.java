@@ -7,13 +7,15 @@ import twisk.mondeIG.MondeIG;
 public class EcouteurBouton implements EventHandler<ActionEvent> {
 
     private MondeIG monde;
+    private String type;
 
     /**
      * Ecouteur de Bouton
      * @param monde
      */
-    public EcouteurBouton(MondeIG monde){
+    public EcouteurBouton(MondeIG monde,String type){
       this.monde=monde;
+      this.type=type;
 
     }
 
@@ -22,9 +24,9 @@ public class EcouteurBouton implements EventHandler<ActionEvent> {
      */
     @Override
     public void handle(ActionEvent actionEvent) {
-        monde.ajouter("activite");
-        System.out.println("Une activite est ajoutée ");
-        monde.notifierObservateurs();
+            monde.ajouter(type);
+            monde.notifierObservateurs();
     }
+
 }
 
