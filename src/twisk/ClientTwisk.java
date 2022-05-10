@@ -15,22 +15,7 @@ public class  ClientTwisk {
 
         // private static void simulate(){
         Monde m = new Monde();
-        try {
-            ClassLoaderPerso ClassLoader = new ClassLoaderPerso(ClientTwisk.class.getClassLoader());
-            Class<?> simul = ClassLoader.loadClass("twisk.simulation.Simulation");
 
-            Object objSimulation = simul.getDeclaredConstructor().newInstance();
-            Method setNbClients = simul.getDeclaredMethod("setNbClients", int.class);
-            //Method setNbClients = simul.getMethod("setNbClients" , int.class);
-
-            Method sim = simul.getDeclaredMethod("simuler", Monde.class);
-
-            setNbClients.invoke(objSimulation, 6);
-            sim.invoke(objSimulation, m);
-        } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
-            // throw new RuntimeException(e);
-            e.printStackTrace();
-        }
 
 
         Guichet guichet = new Guichet("ticket", 2);
@@ -50,8 +35,22 @@ public class  ClientTwisk {
 
         m.aCommeEntree(etape1);
         m.aCommeSortie(act1);
-        Simulation sim = new Simulation();
-        sim.simuler(m);
+        try {
+            ClassLoaderPerso ClassLoader = new ClassLoaderPerso(ClientTwisk.class.getClassLoader());
+            Class<?> simul = ClassLoader.loadClass("twisk.simulation.Simulation");
+
+            Object objSimulation = simul.getDeclaredConstructor().newInstance();
+            Method setNbClients = simul.getDeclaredMethod("setNbClients", int.class);
+            //Method setNbClients = simul.getMethod("setNbClients" , int.class);
+
+            Method sim = simul.getDeclaredMethod("simuler", Monde.class);
+
+            setNbClients.invoke(objSimulation, 4);
+            sim.invoke(objSimulation, m);
+        } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+            // throw new RuntimeException(e);
+            e.printStackTrace();
+        }
         System.out.println("\n************* FIN *************");
     }
 }
