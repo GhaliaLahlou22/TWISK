@@ -11,22 +11,31 @@ import java.lang.reflect.Method;
 
 public class  ClientTwisk {
     public static void main(String[] args) {
-        ClientTwisk client=new ClientTwisk();
+       // ClientTwisk client=new ClientTwisk();
     }
 
-    ClientTwisk(){
+    ClientTwisk(Monde m){
 
-        Monde m=new Monde();
-        ClassLoaderPerso ClassLoader  = new ClassLoaderPerso(this.getClass().getClassLoader());
+       // Monde m=new Monde();
+
 
         try {
+            ClassLoaderPerso ClassLoader  = new ClassLoaderPerso(ClientTwisk.class.getClassLoader());
             Class<?> simul =  ClassLoader.loadClass("twisk.simulation.Simulation");
+
             Object  objSimulation = simul.getDeclaredConstructor().newInstance();
             Method setNbClients = simul.getDeclaredMethod("setNbClients" , int.class);
+            //Method setNbClients = simul.getMethod("setNbClients" , int.class);
+
             Method sim =simul.getDeclaredMethod("simuler" , twisk.monde.Monde.class);
-        } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
-            e.printStackTrace();
-        }
+
+            setNbClients.invoke(objSimulation,6);
+            sim.invoke(objSimulation,m);
+        } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e)
+
+    {
+        throw new RuntimeException(e);
+    }
         Guichet guichet = new Guichet("ticket", 2) ;
         Activite act1 = new ActiviteRestreinte("toboggan", 2, 1) ;
 

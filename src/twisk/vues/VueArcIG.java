@@ -3,7 +3,7 @@ package twisk.vues;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polyline;
-import twisk.ecouteurs.EcouteurArcIg2;
+import twisk.ecouteurs.EcouteurArcIg;
 import twisk.ecouteurs.EcouteurSelectArc;
 import twisk.mondeIG.ArcIG;
 import twisk.mondeIG.MondeIG;
@@ -23,7 +23,7 @@ public class VueArcIG extends Pane implements Observateur {
         Line lig =new Line();
         lig.setStrokeWidth(2.5);
         lig.setStyle("-fx-stroke: purple");
-        lig.setOnMouseClicked(new EcouteurArcIg2(monde,arc));
+        lig.setOnMouseClicked(new EcouteurArcIg(monde,arc));
         lig.setOnMouseClicked(new EcouteurSelectArc(this,monde));
 
         double posX1= arc.getpos(0).getPosX();
