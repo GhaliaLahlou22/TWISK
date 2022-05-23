@@ -13,12 +13,14 @@ public abstract class EtapeIG implements Iterable<PointDeControleIG>{
     protected int posY;
     protected int largeur;
     protected int hauteur;
+
     protected PointDeControleIG[] ptcont;
     protected boolean selectionner;
     protected boolean entree;
     protected boolean Sortie;
     protected int delai;
     protected int ecartTemps;
+    protected int nbJeton;
 
     /**
      * Constructeur de EtapeIG
@@ -34,6 +36,7 @@ public abstract class EtapeIG implements Iterable<PointDeControleIG>{
         this.hauteur=haut;
         this.ecartTemps=3;
         this.delai=1;
+        this.nbJeton=2;
         Random r=new Random();
         this.posX=r.nextInt(300);
         this.posY=r.nextInt(300);
@@ -41,21 +44,33 @@ public abstract class EtapeIG implements Iterable<PointDeControleIG>{
         this.largeur=tc.getLargeur();
         this.hauteur=tc.getHauteur();
         ptcont=new PointDeControleIG[4];
-        ptcont[0]=new PointDeControleIG(this,posX,posY+hauteur/2,"0"); //gauche
-        ptcont[1]=new PointDeControleIG(this,posX+largeur/2,posY,"1");//haut
-        ptcont[2]=new PointDeControleIG(this,posX+largeur,posY+hauteur/2,"2");//droite
-        ptcont[3]=new PointDeControleIG(this,posX+largeur/2,posY+hauteur,"3");
+        if(this.estUneActivite()) {
+            ptcont[0] = new PointDeControleIG(this, posX, posY + hauteur / 2, "0"); //gauche
+            ptcont[1] = new PointDeControleIG(this, posX + largeur / 2, posY, "1");//haut
+            ptcont[2] = new PointDeControleIG(this, posX + largeur, posY + hauteur / 2, "2");//droite
+            ptcont[3] = new PointDeControleIG(this, posX + largeur / 2, posY + hauteur, "3");
+        }else {
+            ptcont = new PointDeControleIG[2];
+            ptcont[0] = new PointDeControleIG(this, posX, posY + hauteur / 2, "0"); //gauche
+            ptcont[1] = new PointDeControleIG(this, posX + largeur, posY + hauteur / 2, "2");//droite
+        }
     }
 
     /**
      * Les point de controle pour le deplacement de l'activité
      */
     public void pointcontrole(){
-        ptcont=new PointDeControleIG[4];
-        ptcont[0]=new PointDeControleIG(this,posX,posY+hauteur/2,"0"); //gauche
-        ptcont[1]=new PointDeControleIG(this,posX+largeur/2,posY,"1");//haut
-        ptcont[2]=new PointDeControleIG(this,posX+largeur,posY+hauteur/2,"2");//droite
-        ptcont[3]=new PointDeControleIG(this,posX+largeur/2,posY+hauteur,"3");
+        if(this.estUneActivite()) {
+            ptcont = new PointDeControleIG[4];
+            ptcont[0] = new PointDeControleIG(this, posX, posY + hauteur / 2, "0"); //gauche
+            ptcont[1] = new PointDeControleIG(this, posX + largeur / 2, posY, "1");//haut
+            ptcont[2] = new PointDeControleIG(this, posX + largeur, posY + hauteur / 2, "2");//droite
+            ptcont[3] = new PointDeControleIG(this, posX + largeur / 2, posY + hauteur, "3");
+        }else{
+            ptcont = new PointDeControleIG[2];
+            ptcont[0] = new PointDeControleIG(this, posX, posY + hauteur / 2, "0"); //gauche
+            ptcont[1] = new PointDeControleIG(this, posX + largeur, posY + hauteur / 2, "2");//droite
+        }
     }
     /**
      * Fonction qui valide si une etape est une activite
@@ -85,7 +100,7 @@ public abstract class EtapeIG implements Iterable<PointDeControleIG>{
     public int getEcartTemps(){
         return ecartTemps;
     }
-
+    public int getNbjetons() {return nbJeton;}
 
     /**
      * Getter de nom

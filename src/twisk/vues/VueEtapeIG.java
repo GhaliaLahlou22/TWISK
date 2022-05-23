@@ -11,7 +11,7 @@ public abstract class VueEtapeIG extends VBox implements Observateur {
     protected MondeIG monde;
     protected EtapeIG etig;
     protected Label lb;
-    protected ArcIG arc;
+
 /*vue etape ajouter chaque ecouteur
     ecouteur*/
     /**
@@ -45,8 +45,8 @@ public abstract class VueEtapeIG extends VBox implements Observateur {
         } else {
             this.etig = etape;
             this.setId(etig.getIdentiant());
-            lb = new Label(etape.getNom() + "  " + etig.getTemps() + " ****" + etig.getEcartTemps() + " temps");
-            lb.setPrefSize(300, 35);
+            lb = new Label(etape.getNom() + " : "  + etig.getNbjetons() + " jetons");
+            lb.setPrefSize(250, 2);
             lb.setStyle("-fx-alignment:center ;-fx-text-fill: blue");
             this.setStyle("-fx-border-color: #696969;-fx-background-insets: 0 0 -1 0, 0, 1, 2;-fx-background-insets:6; -fx-border-radius:7;-fx-background-radius: 3px, 3px, 2px, 1px");
             this.setOnMouseClicked(new EcouteurSelectEtape(this, monde));

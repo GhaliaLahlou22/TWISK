@@ -6,8 +6,8 @@ public class Guichet extends Etape {
     /**
      * Les variables
      */
-    private int nbjetons;
-    private int nbSemaphore = FabriqueNumero.getInstance().getNumeroSemaphore();;
+    protected int nbjetons;
+    protected int nbSemaphore = FabriqueNumero.getInstance().getNumeroSemaphore();;
 
     /**
      * Constructeurs de guichet
@@ -89,6 +89,7 @@ public class Guichet extends Etape {
      * Getter de nombre de jetons
      * @return nombres de jetons
      */
+    @Override
     public int getnbJetons(){
         return nbjetons;
     }

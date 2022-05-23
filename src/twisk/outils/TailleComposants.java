@@ -4,13 +4,18 @@ public class TailleComposants {
     private static TailleComposants instance =new TailleComposants();
     private int hauteur;
     private int largeur;
+    private int hauteurG;
+    private  int largeurG;
 
     /**
      * Constructeur de TailleComposants
      */
     public TailleComposants(){
         this.hauteur = 90;
-        this.largeur = 198;
+        this.largeur = 267;
+        this.hauteurG = 73;
+        this.largeurG = 267;
+
     }
 
     /**
@@ -33,6 +38,12 @@ public class TailleComposants {
      */
     public int getLargeur(){
         return largeur;
+    }
+    public int getHauteurG(){
+        return hauteurG;
+    }
+    public int getLargeurG(){
+        return largeurG;
     }
 
 }
