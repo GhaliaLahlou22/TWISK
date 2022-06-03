@@ -43,12 +43,13 @@ public abstract class EtapeIG implements Iterable<PointDeControleIG>{
         TailleComposants tc = new TailleComposants().getInstance();
         this.largeur=tc.getLargeur();
         this.hauteur=tc.getHauteur();
-        ptcont=new PointDeControleIG[4];
+
+          ptcont=new PointDeControleIG[4];
         if(this.estUneActivite()) {
-            ptcont[0] = new PointDeControleIG(this, posX, posY + hauteur / 2, "0"); //gauche
-            ptcont[1] = new PointDeControleIG(this, posX + largeur / 2, posY, "1");//haut
-            ptcont[2] = new PointDeControleIG(this, posX + largeur, posY + hauteur / 2, "2");//droite
-            ptcont[3] = new PointDeControleIG(this, posX + largeur / 2, posY + hauteur, "3");
+            ptcont[0]=new PointDeControleIG(this,posX,posY+hauteur/2,"0"); //gauche
+            ptcont[1]=new PointDeControleIG(this,posX+largeur/2,posY,"1");//haut
+            ptcont[2]=new PointDeControleIG(this,posX+largeur,posY+hauteur/2,"2");//droite
+            ptcont[3]=new PointDeControleIG(this,posX+largeur/2,posY+hauteur,"3");
         }else {
             ptcont = new PointDeControleIG[2];
             ptcont[0] = new PointDeControleIG(this, posX, posY + hauteur / 2, "0"); //gauche

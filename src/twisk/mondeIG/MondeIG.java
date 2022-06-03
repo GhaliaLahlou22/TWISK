@@ -29,10 +29,8 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG>{
     public MondeIG(){
 
         String identif =fabid.getIdentifiantEtape();
-        EtapeIG activ =new ActiviteIG("activite"+identif,identif,60,60);
-        EtapeIG guich =new GuichetIG("guichet"+identif,identif,50,100);
+        EtapeIG activ =new ActiviteIG("activite"+identif,identif,60,20);
         etapes.put(identif,activ);
-        etapes.put(identif,guich);
     }
 
     /**

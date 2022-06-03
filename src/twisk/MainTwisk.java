@@ -28,7 +28,11 @@ public class MainTwisk extends Application{
         stage.setScene(new Scene(root,550,450));
         stage.show();
     }
+    public void stop(){
+        System.exit(0);
+    }
     public static void main(String[] args) {
         launch();
     }
+
 }
