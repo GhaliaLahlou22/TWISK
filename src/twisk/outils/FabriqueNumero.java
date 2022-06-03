@@ -5,6 +5,7 @@ public class FabriqueNumero {
     private static final FabriqueNumero instance = new FabriqueNumero();
     private int cptEtape;
     private int cptSemaphore;
+    private int numlibrairie;
 
     /**
      * Constructeur de FabriqueNumero
@@ -12,6 +13,7 @@ public class FabriqueNumero {
     private FabriqueNumero() {
         cptEtape = 0;
         cptSemaphore = 1;
+        numlibrairie =0;
     }
     public static FabriqueNumero getInstance() {
         return instance;
@@ -26,7 +28,7 @@ public class FabriqueNumero {
         cptEtape++;
         return cptEtape - 1;
     }
-    public void reset() {
+    public void reset() {//monde et getionnaire etape
         cptEtape = 0;
         cptSemaphore = 1;
     }
@@ -40,4 +42,9 @@ public class FabriqueNumero {
         cptSemaphore++;
         return cptSemaphore - 1;
     }
+    public int getnumlib(){
+        numlibrairie++;
+        return numlibrairie;
+    }
+
 }

@@ -11,7 +11,9 @@ public class KitC {
     /**
      * Constructeur de KitC
      */
-    public KitC(){
+    private final FabriqueNumero fab = FabriqueNumero.getInstance();
+    private final  int cpt = fab.getnumlib();
+    public KitC() {
 
     }
 
@@ -100,7 +102,7 @@ public class KitC {
    public void construireLaLibrairie(){
        try {
            Runtime runtime = Runtime.getRuntime();
-           Process p = runtime.exec("gcc -shared /tmp/twisk/programmeC.o /tmp/twisk/codeNatif.o /tmp/twisk/client.o -o /tmp/twisk/libTwisk.so");
+           Process p = runtime.exec("gcc -shared /tmp/twisk/programmeC.o /tmp/twisk/codeNatif.o /tmp/twisk/client.o -o /tmp/twisk/libTwisk"+cpt+".so");
            p.waitFor();
 
            // récupération des messages sur la sortie standard et la sortie d’erreur de la commande exécutée
@@ -117,5 +119,8 @@ public class KitC {
        } catch (IOException  | InterruptedException e) {
            e.printStackTrace();
        }
+   }
+   public int getNumlib(){
+       return cpt;
    }
 }

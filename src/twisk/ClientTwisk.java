@@ -17,7 +17,6 @@ public class  ClientTwisk {
         Monde m = new Monde();
 
 
-
         Guichet guichet = new Guichet("ticket", 2);
         Activite act1 = new ActiviteRestreinte("toboggan", 2, 1);
 
@@ -25,7 +24,6 @@ public class  ClientTwisk {
         Etape etape2 = new Activite("boutique");
 
         etape1.ajouterSuccesseur(etape2);
-        ;
         etape2.ajouterSuccesseur(guichet);
         guichet.ajouterSuccesseur(act1);
 
@@ -52,27 +50,39 @@ public class  ClientTwisk {
             e.printStackTrace();
         }
         System.out.println("\n************* FIN *************");
-    }
-}
-       /* Monde monde = new Monde();
 
-        Activite zoo = new Activite("balade au zoo", 3, 1);
-        Guichet g = new Guichet("accès au toboggan", 2);
-        Activite tob = new ActiviteRestreinte("accès au toboggan", 2, 1);
+        Monde monde = new Monde();
+        Guichet guichett = new Guichet("ghalia", 2);
+        Activite act1t = new ActiviteRestreinte("kenza", 2, 1);
 
-        Activite wc = new Activite("toilette ", 3, 1);
-        Guichet gc = new Guichet(" guichet", 2);
-        Activite tobo = new ActiviteRestreinte(" tob ", 2, 1);
+        Etape etape1t = new Activite("mghaloucheee");
+        Etape etape2t = new Activite("kenzaaaaa");
 
-        zoo.ajouterSuccesseur(guichet);
-        guichet.ajouterSuccesseur(tob);
+        etape1t.ajouterSuccesseur(etape2t);
+        etape2t.ajouterSuccesseur(guichett);
+        guichett.ajouterSuccesseur(act1t);
 
-        monde.ajouter(zoo, tob, tobo , wc , gc, g);
+        monde.ajouter(etape1t, etape2t);
+        monde.ajouter(act1t);
+        monde.ajouter(guichett);
 
-        monde.aCommeEntree(zoo);
-        monde.aCommeSortie(tob);
+        monde.aCommeEntree(etape1t);
+        monde.aCommeSortie(act1t);
+        try {
+            ClassLoaderPerso ClassLoader2 = new ClassLoaderPerso(ClientTwisk.class.getClassLoader());
+            Class<?> simul2 = ClassLoader2.loadClass("twisk.simulation.Simulation");
 
-        Simulation simu = new Simulation();
-        simu.simuler(monde);*/
-   // }
+            Object objSimulation2 = simul2.getDeclaredConstructor().newInstance();
+            Method setNbClients2 = simul2.getDeclaredMethod("setNbClients", int.class);
+            //Method setNbClients = simul.getMethod("setNbClients" , int.class);
+
+            Method sim2 = simul2.getDeclaredMethod("simuler", Monde.class);
+
+            setNbClients2.invoke(objSimulation2, 4);
+            sim2.invoke(objSimulation2, monde);
+        } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+            // throw new RuntimeException(e);
+            e.printStackTrace();
+        }
+    }}
 

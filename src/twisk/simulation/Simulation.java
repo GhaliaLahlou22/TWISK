@@ -39,7 +39,7 @@ public class Simulation {
         kit.compiler();
         kit.construireLaLibrairie();
         System.out.println(" "+monde.toString());
-        System.load("/tmp/twisk/libTwisk.so") ;
+        System.load("/tmp/twisk/libTwisk"+kit.getNumlib()+".so") ;
         tabJetonsGuichet = this.Nbjetons(monde);
         nbEtapes = monde.nbEtapes();
         nbGuichets = monde.nbGuichet();

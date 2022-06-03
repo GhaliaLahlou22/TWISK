@@ -31,9 +31,11 @@ public class ActiviteRestreinte extends Activite {
      * Fonction qui genere le code c
      * @return
      */
-    @Override
     public String toC() {
-        return super.toC();
+        int i =1 ;
+        StringBuilder strC = new StringBuilder();
+        strC.append("transfert("+this.getNom()+this.getNum()+","+this.gest_Succ.getSuccesseur().getNom()+this.gest_Succ.getSuccesseur().getNum()+");\n"+gest_Succ.getSuccesseur().toC());
+        return strC.toString();
     }
 
 }
