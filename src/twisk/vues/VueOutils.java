@@ -24,8 +24,10 @@ public class VueOutils extends TilePane implements Observateur {
         Tooltip tool =new Tooltip("Ajouter une activite");
         Tooltip tool1 =new Tooltip("Ajouter un guichet");
         this.AddBouton = new Button("");
-        this.AddBouton2 = new Button("ajout_guicht");
-        this.AddBouton.setGraphic(new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/Plus.png")), 40, 40, true, true)));
+        this.AddBouton2 = new Button("");
+        this.AddBouton.setGraphic(new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/activite.png")), 40, 40, true, true)));
+        this.AddBouton2.setGraphic(new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/guichet.png")), 40, 40, true, true)));
+
         this.AddBouton.setId("boutton en plus");
         this.AddBouton2.setId("boutton en plus");
         this.AddBouton.setTooltip(tool);

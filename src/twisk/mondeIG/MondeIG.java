@@ -19,6 +19,12 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG>{
     private ArrayList<EtapeIG>listsortie=new ArrayList<>(10);
     private PointDeControleIG pointselect;
 
+    public int getNbClients() {
+        return nbClients;
+    }
+
+    private int nbClients = 5;
+
 /**
  * TOOOOOO  DOOOO
  * Les condition des exceptions dons la fonction de ajouter(p1,p2)
@@ -152,9 +158,7 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG>{
      */
     public void Delai(int delai) {
         this.selectedEtape.get(0).setDelai(delai);
-
     }
-
     /**
      * Fonction qui retourne l 'escart temps changé
      * @param ecartt
@@ -202,4 +206,5 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG>{
             arclist.remove(arc);
         }
     }
+
 }

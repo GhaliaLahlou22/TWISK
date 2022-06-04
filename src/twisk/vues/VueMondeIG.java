@@ -19,7 +19,22 @@ public class VueMondeIG extends Pane implements Observateur {
      */
     public VueMondeIG(MondeIG monde) {
         this.Monde = monde;
-        reagir();
+        for (EtapeIG etape : Monde) {
+            if (etape.estUneActivite()) {
+                VueEtapeIG vue = new VueActiviteIG(Monde, etape);
+                this.getChildren().add(vue);
+            }
+            else {
+                VueEtapeIG vue1 = new VueGuichetIG(Monde, etape);
+                this.getChildren().add(vue1);
+            }
+            for(PointDeControleIG ptc : etape){
+                VuePointDeControleIG point=new VuePointDeControleIG(Monde,ptc,etape);
+                this.getChildren().add(point);
+            }
+        }
+        this.setOnDragDropped(new EcouteurDragDessin(this.Monde,this));
+        this.setOnDragOver(new EcouteurDrapOver());
         this.Monde.ajouterObservateur(this);
     }
 
@@ -36,10 +51,14 @@ public class VueMondeIG extends Pane implements Observateur {
             this.getChildren().add(arcig);
         }
         for (EtapeIG etape : Monde) {
-            VueActiviteIG vue = new VueActiviteIG(Monde, etape);
-            VueGuichetIG vueg =new VueGuichetIG(Monde,etape);
-          //  setOnAction(new EcouteurDeselection(monde));
-            this.getChildren().addAll(vue,vueg);
+            if (etape.estUneActivite()) {
+                VueEtapeIG vue = new VueActiviteIG(Monde, etape);
+                this.getChildren().add(vue);
+            }
+            else {
+                VueEtapeIG vue1 = new VueGuichetIG(Monde, etape);
+                this.getChildren().add(vue1);
+            }
             for(PointDeControleIG ptc : etape){
                 VuePointDeControleIG point=new VuePointDeControleIG(Monde,ptc,etape);
                 this.getChildren().add(point);

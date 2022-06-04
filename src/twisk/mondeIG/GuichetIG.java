@@ -6,7 +6,6 @@ public class GuichetIG extends EtapeIG {
 
     }
 
-
     @Override
     public boolean estUnGuichet(){
         return true;
