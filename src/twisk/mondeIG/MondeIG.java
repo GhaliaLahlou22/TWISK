@@ -1,9 +1,15 @@
 package twisk.mondeIG;
 
+import twisk.ClientTwisk;
 import twisk.exceptions.ExceptionExistArc;
 import twisk.exceptions.ExceptionsArcMemeEtape;
+import twisk.exceptions.MondeException;
+import twisk.monde.*;
+import twisk.outils.ClassLoaderPerso;
 import twisk.outils.FabriqueIdentifiant;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -18,12 +24,10 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG>{
     private ArrayList<EtapeIG>listentree=new ArrayList<>(10);
     private ArrayList<EtapeIG>listsortie=new ArrayList<>(10);
     private PointDeControleIG pointselect;
+    private int nbClients =5;
+    private CorrespondanceEtapes correspondanceEtapes ;
+    private transient Object simul;
 
-    public int getNbClients() {
-        return nbClients;
-    }
-
-    private int nbClients = 5;
 
 /**
  * TOOOOOO  DOOOO
@@ -206,5 +210,89 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG>{
             arclist.remove(arc);
         }
     }
+
+    public void simuler() throws MondeException {
+        verifierMondeIG();
+        Monde m = creerMonde();
+        try {
+            ClassLoaderPerso ClassLoader = new ClassLoaderPerso(ClientTwisk.class.getClassLoader());
+            Class<?> classSim = ClassLoader.loadClass("twisk.simulation.Simulation");
+            Class<?> classSim1 = ClassLoader.loadClass("twisk.simulation.Simulation$1");
+            simul = classSim.getDeclaredConstructor().newInstance();
+            Method msetNbClients = classSim.getDeclaredMethod("setNbClients", int.class);
+            Method msimuler = classSim.getDeclaredMethod("simuler", twisk.monde.Monde.class);
+            Method majouterobs = classSim.getDeclaredMethod("ajouterObservateur", twisk.vues.Observateur.class);
+            msetNbClients.invoke(simul, getNbClients());
+            majouterobs.invoke(simul, this);
+            msimuler.invoke(simul, m);
+
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void verifierMondeIG() throws MondeException {
+        if(listentree.size()<=0 || listsortie.size()<=0 || etapes.size()<=0){
+            throw new MondeException() ;
+        }
+        for(EtapeIG e : etapes.values()){
+            for (EtapeIG etp : e.getSuccesseur()){
+                if(etp.estUneActivite() && e.estUnGuichet()){
+                    throw new MondeException();
+                }
+                if(e.estUneActivite()||e.estUneActiviteRestreinte() && etp.estUneActiviteRestreinte()){
+                    throw new MondeException();
+                }
+                if(e.getSuccesseur().size()<=0){
+                    throw new MondeException();
+                }
+                if(e.estUnGuichet() && e.getSuccesseur().size()>=0){
+                    throw new MondeException();
+                }
+                if(etp.estUneActivite() && etp.estUnGuichet()){
+                    ((ActiviteIG )etp).estUneActiviteRestreinte();
+                }
+
+            }
+        }
+
+    }
+    private Monde creerMonde(){
+        correspondanceEtapes = new CorrespondanceEtapes();
+        Monde m = new Monde();
+        for (EtapeIG e : etapes.values()){
+            if(e.estUneActiviteRestreinte()){
+                Etape etp = new ActiviteRestreinte(e.getNom(), ((ActiviteIG) e).getTemps(), ((ActiviteIG) e).getEcartTemps());
+                m.ajouter(etp);
+                correspondanceEtapes.ajouter(e,etp);
+            } else if(e.estUneActivite()){
+                Etape ac = new Activite(e.getNom(), ((ActiviteIG) e).getTemps(), ((ActiviteIG) e).getEcartTemps());
+                m.ajouter(ac);
+                correspondanceEtapes.ajouter(e,ac);
+            }else{
+                Etape g = new Guichet(e.getNom(), ((GuichetIG) e).getNbjetons());
+                m.ajouter(g);
+                correspondanceEtapes.ajouter(e,g);
+
+            }
+        }
+        for(EtapeIG in : listentree){
+            m.aCommeEntree(correspondanceEtapes.get(in));
+        }
+        for(EtapeIG out : listsortie){
+            m.aCommeSortie(correspondanceEtapes.get(out));
+        }
+        for(EtapeIG e: etapes.values()){
+            for(EtapeIG etp : e.getSuccesseur()){
+                correspondanceEtapes.get(e).ajouterSuccesseur(correspondanceEtapes.get(etp));
+            }
+        }
+        return m ;
+    }
+    public int getNbClients() {
+        return nbClients;
+    }
+
 
 }

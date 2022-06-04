@@ -4,7 +4,7 @@ package twisk.mondeIG;
 public class ActiviteIG extends EtapeIG {
   //    private int temps;
   //    private int ecarttemps;
-
+  private boolean rest;
     /**
      * Constructeur de ActiviteIG
      * @param nom
@@ -27,5 +27,7 @@ public class ActiviteIG extends EtapeIG {
     public boolean estUneActivite(){
         return true;
     }
-
+    public boolean estUneActiviteRestreinte(){
+        return rest;
+    }
 }
