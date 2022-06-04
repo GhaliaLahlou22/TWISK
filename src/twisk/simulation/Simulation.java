@@ -64,6 +64,7 @@ public class Simulation {
                 if (numEtapes == 1) {
                     ended = nbClientsEtapes == nbClients;
                 }
+                monde.reset();
             }
             try {
                 Thread.sleep(1000);

@@ -1,5 +1,7 @@
 package twisk.monde;
 
+import twisk.outils.FabriqueNumero;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -139,6 +141,11 @@ public class Monde implements Iterable<Etape>{
     public  Etape getEtape(int i){
         return gestEtapes.getEtapes(i);
     }
+
+    public void reset(){
+        gestEtapes.reset();
+    }
+
 
 
 }

@@ -1,5 +1,7 @@
 package twisk.monde;
 
+import twisk.outils.FabriqueNumero;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -69,6 +71,11 @@ public class GestionnaireEtapes implements Iterable<Etape> {
      */
     public  Etape getEtapes(int i ){
         return liste_Steps.get(i);
+    }
+
+    public void reset(){
+        FabriqueNumero fab = FabriqueNumero.getInstance();
+        fab.reset();
     }
 
 }
