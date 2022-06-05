@@ -1,6 +1,8 @@
 package twisk.outils;
 
-public class FabriqueNumero {
+import java.io.Serializable;
+
+public class FabriqueNumero  implements Serializable {
 
     private static final FabriqueNumero instance = new FabriqueNumero();
     private int cptEtape;

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 
-public class GestionnaireClients {
+public class GestionnaireClients  implements Iterable<Client>{
      private ArrayList<Client> clients ;
      int nbClients ;
 

@@ -3,8 +3,10 @@ import twisk.monde.Etape;
 import twisk.monde.Monde;
 import twisk.outils.KitC;
 
+import java.util.Iterator;
 
-public class Simulation {
+
+public class Simulation  implements Iterable<Client>{
     /**
      * Variables
      */
@@ -175,5 +177,10 @@ public class Simulation {
 
     public void setTabJetonsGuichet(int[] tabJetonsGuichet) {
         this.tabJetonsGuichet = tabJetonsGuichet;
+    }
+
+    @Override
+    public Iterator<Client> iterator() {
+        return null;
     }
 }
