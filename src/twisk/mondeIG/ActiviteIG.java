@@ -2,8 +2,7 @@ package twisk.mondeIG;
 
 
 public class ActiviteIG extends EtapeIG {
-  //    private int temps;
-  //    private int ecarttemps;
+
   private boolean rest;
     /**
      * Constructeur de ActiviteIG
@@ -14,8 +13,6 @@ public class ActiviteIG extends EtapeIG {
      */
     public ActiviteIG(String nom,String idf,int larg,int haut){
         super(nom,idf,larg,haut);
-      //  this.temps=4;
-     //   this.ecarttemps=2;
     }
 
 

@@ -52,7 +52,7 @@ public abstract class EtapeIG implements Iterable<PointDeControleIG>{
      * Les point de controle pour le deplacement de l'activité
      */
     public void pointcontrole(){
-        if(this.estUneActivite()) {
+        if(this.estUneActivite() || this.estUneActiviteRestreinte()) {
             ptcont = new PointDeControleIG[4];
             ptcont[0] = new PointDeControleIG(this, posX, posY + hauteur / 2, "0"); //gauche
             ptcont[1] = new PointDeControleIG(this, posX + largeur / 2, posY, "1");//haut

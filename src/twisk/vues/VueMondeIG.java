@@ -44,7 +44,6 @@ public class VueMondeIG extends Pane implements Observateur {
     @Override
     public void reagir() {
         this.getChildren().clear();
-     //   for (int cpt = 0; cpt < Monde.getArcig().size(); cpt++) {
         Iterator<ArcIG> arcIGIterator = this.Monde.iteratorarc();
         while (arcIGIterator.hasNext()) { 
             VueArcIG arcig = new VueArcIG(arcIGIterator.next(), Monde);
@@ -64,11 +63,6 @@ public class VueMondeIG extends Pane implements Observateur {
                 this.getChildren().add(point);
             }
         }
-
-       /* for (EtapeIG etape : Monde) {
-            VueMenu menu = new VueMenu(Monde);
-            this.getChildren().add(menu);
-        }*/
     }
 }
 

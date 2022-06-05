@@ -36,7 +36,7 @@ public class VueOutils extends TilePane implements Observateur {
         this.AddBouton3.setId("boutton en plus");
         this.AddBouton.setTooltip(tool);
         this.AddBouton2.setTooltip(tool1);
-        this.AddBouton3.setTooltip(tool1);
+        this.AddBouton3.setTooltip(tool2);
         this.AddBouton.setOnAction(new EcouteurBouton(monde,"activite"));
         this.AddBouton2.setOnAction(new EcouteurBouton(monde,"guichet"));
         this.AddBouton3.setOnAction(new EcouteurBouton(monde,"Simulation"));

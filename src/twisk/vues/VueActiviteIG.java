@@ -16,7 +16,6 @@ public class VueActiviteIG extends VueEtapeIG implements Observateur {
     public VueActiviteIG(MondeIG monde, EtapeIG etape) {
         super(monde, etape);
         hbox = new HBox();
-        //this.setPadding(new Insets(4,2,2,2));
         hbox.setPrefHeight(37);
         hbox.setPrefWidth(60);
         this.setPadding(new Insets(10,7,7,8));
