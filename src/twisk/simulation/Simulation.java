@@ -21,6 +21,7 @@ public class Simulation extends SujetObserve implements Iterable<Client>{
     int etape, numEtapes;
      KitC kit ;
      GestionnaireClients gestClients ;
+     Boolean simulation ;
 
     /**
      * Constructeurs de Simulation
@@ -183,5 +184,8 @@ public class Simulation extends SujetObserve implements Iterable<Client>{
     @Override
     public Iterator<Client> iterator() {
         return null;
+    }
+    public Boolean isStarted(){
+        return simulation;
     }
 }

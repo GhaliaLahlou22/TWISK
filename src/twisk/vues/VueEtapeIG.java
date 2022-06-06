@@ -69,11 +69,12 @@ public abstract class VueEtapeIG extends VBox implements Observateur {
             entree.setGraphic(new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/entree.png")))));
             logo.getChildren().add(entree);
         }else {
-            if ( this.etig.isSortie()) {
+            if ( this.etig.isSortie() && etig.estUneActivite()) {
                 Label sortie = new Label("");
                 sortie.setGraphic(new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/sortie.png")))));
                 sortie.setAlignment(Pos.TOP_RIGHT);
                 logo.getChildren().add(sortie);
+
             }
         }
         //logo.setAlignment(Pos.TOP_RIGHT);
