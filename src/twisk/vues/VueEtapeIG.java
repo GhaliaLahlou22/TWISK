@@ -41,17 +41,7 @@ public abstract class VueEtapeIG extends VBox implements Observateur {
             if (this.etig.isSelectionner()) {
                 this.setStyle("-fx-border-color: #BABABA;-fx-background-color: #83A697;-fx-background-insets: 0 0 -1 0, 0, 1, 2;-fx-background-insets:6; -fx-border-radius:7;-fx-background-radius: 3px, 3px, 2px, 1px");
             }
-            entrer_sortie();
-          //  if (this.etig.isEntree() && !this.etig.isSortie()) {
 
-               // this.setGraphic(new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/simulation.png")), 40, 40, true, true)));
-               // this.setStyle("-fx-border-color: #BABABA;-fx-background-color: #6600cc;-fx-background-insets: 0 0 -1 0, 0, 1, 2;-fx-background-insets:6; -fx-border-radius:7;-fx-background-radius: 3px, 3px, 2px, 1px");
-
-           // } else {
-             //   if (!this.etig.isEntree() && this.etig.isSortie()) {
-              //      this.setStyle("-fx-border-color: #BABABA;-fx-background-color: green;-fx-background-insets: 0 0 -1 0, 0, 1, 2;-fx-background-insets:6; -fx-border-radius:7;-fx-background-radius: 3px, 3px, 2px, 1px");
-              //  }
-            //}
         } else {
             this.etig = etape;
             this.setId(etig.getIdentiant());
@@ -69,19 +59,22 @@ public abstract class VueEtapeIG extends VBox implements Observateur {
                 this.setStyle("-fx-border-color: #BABABA;-fx-background-color: #83A697;-fx-background-insets: 0 0 -1 0, 0, 1, 2;-fx-background-insets:6; -fx-border-radius:7;-fx-background-radius: 3px, 3px, 2px, 1px");
             }
         }
+        entrer_sortie();
     }
     public void entrer_sortie() {
         HBox logo = new HBox();
-        if (!this.etig.isSortie() && this.etig.isEntree()) {
+
+        if ( this.etig.isEntree()) {
             Label entree = new Label("");
             entree.setGraphic(new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/entree.png")))));
             logo.getChildren().add(entree);
-        }
-        if (!this.etig.isEntree() && this.etig.isSortie()) {
-            Label sortie = new Label("");
-            sortie.setGraphic(new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/sortie.png")))));
-            sortie.setAlignment(Pos.TOP_RIGHT);
-            logo.getChildren().add(sortie);
+        }else {
+            if ( this.etig.isSortie()) {
+                Label sortie = new Label("");
+                sortie.setGraphic(new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/sortie.png")))));
+                sortie.setAlignment(Pos.TOP_RIGHT);
+                logo.getChildren().add(sortie);
+            }
         }
         //logo.setAlignment(Pos.TOP_RIGHT);
         logo.setPadding(new Insets(1,1,1,1));
