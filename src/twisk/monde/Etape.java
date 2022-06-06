@@ -119,4 +119,6 @@ public abstract class Etape implements Iterable<Etape> {
  * Getter de nombre de de jetons
  */
     public abstract int getnbJetons();
+
+
 }

@@ -7,12 +7,15 @@ import twisk.exceptions.MondeException;
 import twisk.monde.*;
 import twisk.outils.ClassLoaderPerso;
 import twisk.outils.FabriqueIdentifiant;
+import twisk.simulation.Client;
+import twisk.simulation.GestionnaireClients;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Objects;
 
 public class MondeIG extends SujetObserve implements Iterable<EtapeIG>{
 
@@ -206,9 +209,20 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG>{
      * Fonction qui supprime l'arc selectionné
      */
     public void SuppArc() {
-        for (ArcIG arc : selectedArc ) {
+        /*Iterator<ArcIG> arcit= iteratorarc();
+        while(arcit.hasNext()){
+            ArcIG arc =arcit.next();
+            if (arc.getselectionnerarc()) {
+                EtapeIG successeur = arc.getpos(1).getetape();
+                EtapeIG etape = arc.getpos(0).getetape();
+                etape.getSuccesseur().remove(successeur);
+                arcit.remove();
+            }
+        }*/
+       for (ArcIG arc : selectedArc ) {
             arclist.remove(arc);
         }
+        notifierObservateurs();
     }
 
     public void simuler() throws MondeException {
@@ -229,7 +243,7 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG>{
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
             e.printStackTrace();
         }
-
+       notifierObservateurs();
     }
 
     private void verifierMondeIG() throws MondeException {
@@ -294,5 +308,17 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG>{
         return nbClients;
     }
 
-
+public CorrespondanceEtapes getcorrespondance(){
+        return correspondanceEtapes;
+}
+    public ArrayList<Client> getclient() {
+        GestionnaireClients gestionnaireClients = null;
+        try {
+            Method mgestionnaireclients = simul.getClass().getDeclaredMethod("getGestionnaireClients");
+            gestionnaireClients = (GestionnaireClients) mgestionnaireclients.invoke(simul);
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        return Objects.requireNonNull(gestionnaireClients).getGestclients();
+    }
 }

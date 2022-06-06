@@ -1,5 +1,6 @@
 package twisk.vues;
 
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import twisk.ecouteurs.EcouteurDragDessin;
 import twisk.ecouteurs.EcouteurDrapOver;
@@ -7,11 +8,12 @@ import twisk.mondeIG.ArcIG;
 import twisk.mondeIG.EtapeIG;
 import twisk.mondeIG.MondeIG;
 import twisk.mondeIG.PointDeControleIG;
+import twisk.simulation.Client;
 
 import java.util.Iterator;
 
 public class VueMondeIG extends Pane implements Observateur {
-    private final MondeIG Monde;
+    private  MondeIG Monde;
 
     /**
      * Constructeur de MondeIG
@@ -37,6 +39,16 @@ public class VueMondeIG extends Pane implements Observateur {
         this.setOnDragOver(new EcouteurDrapOver());
         this.Monde.ajouterObservateur(this);
     }
+    public void addClientActivite(HBox h,EtapeIG step ){
+        for(Client clt : Monde.getclient()){
+            if(Monde.getcorrespondance().get(step).equals(clt.getEtape())){
+              VueClient vue=new VueClient(clt);
+              h.getChildren().addAll(vue);
+            }
+
+        }
+
+    }
 
     /**
      * Fonction reagir de MondeIG
@@ -52,6 +64,7 @@ public class VueMondeIG extends Pane implements Observateur {
         for (EtapeIG etape : Monde) {
             if (etape.estUneActivite()) {
                 VueEtapeIG vue = new VueActiviteIG(Monde, etape);
+                //addClientActivite(vue.ge)
                 this.getChildren().add(vue);
             }
             else {

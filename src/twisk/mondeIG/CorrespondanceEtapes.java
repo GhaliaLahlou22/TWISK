@@ -20,4 +20,8 @@ public class CorrespondanceEtapes implements Serializable {
     public Etape get(EtapeIG e ){
         return correspondance.get(e);
     }
+
+    public HashMap<EtapeIG, Etape> getCorrespondance() {
+        return correspondance;
+    }
 }

@@ -8,6 +8,10 @@ public class Client {
     int rang ;
     Etape etape ;
 
+    public Etape getEtape() {
+        return etape;
+    }
+
     public Client(int numero){
         this.numeroClient=numero;
     }
@@ -16,7 +20,7 @@ public class Client {
         this.etape=etape;
 
     }
-    public int getNumClient() {
+    public  int getNumClient() {
         return numeroClient;
     }
 }

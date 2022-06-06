@@ -18,6 +18,9 @@ public class GestionnaireClients  implements Iterable<Client>{
         this.nbClients = nbClients;
 
     }
+    public ArrayList<Client> getGestclients(){
+        return clients;
+    }
     public void setClients(int[] tabClients ){
         for(int client : tabClients){
             clients.add(new Client(client));
