@@ -1,12 +1,13 @@
 package twisk.simulation;
 import twisk.monde.Etape;
 import twisk.monde.Monde;
+import twisk.mondeIG.SujetObserve;
 import twisk.outils.KitC;
 
 import java.util.Iterator;
 
 
-public class Simulation  implements Iterable<Client>{
+public class Simulation extends SujetObserve implements Iterable<Client>{
     /**
      * Variables
      */

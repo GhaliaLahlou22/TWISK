@@ -40,12 +40,11 @@ public class VueMondeIG extends Pane implements Observateur {
         this.Monde.ajouterObservateur(this);
     }
     public void addClientActivite(HBox h,EtapeIG step ){
-        for(Client clt : Monde.getclient()){
-            if(Monde.getcorrespondance().get(step).equals(clt.getEtape())){
-              VueClient vue=new VueClient(clt);
-              h.getChildren().addAll(vue);
+        for (Client clt : Monde.getClients()) {
+            if (Monde.getcorrespondance().get(step).equals(clt.getEtape())) {
+                VueClient v = new VueClient(clt);
+                h.getChildren().add(v);
             }
-
         }
 
     }
@@ -64,7 +63,7 @@ public class VueMondeIG extends Pane implements Observateur {
         for (EtapeIG etape : Monde) {
             if (etape.estUneActivite()) {
                 VueEtapeIG vue = new VueActiviteIG(Monde, etape);
-                //addClientActivite(vue.ge)
+              addClientActivite(((VueActiviteIG) vue).getHbox() , etape);
                 this.getChildren().add(vue);
             }
             else {

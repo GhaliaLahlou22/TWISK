@@ -36,13 +36,10 @@ public class  ClientTwisk {
         try {
             ClassLoaderPerso ClassLoader = new ClassLoaderPerso(ClientTwisk.class.getClassLoader());
             Class<?> simul = ClassLoader.loadClass("twisk.simulation.Simulation");
-
             Object objSimulation = simul.getDeclaredConstructor().newInstance();
             Method setNbClients = simul.getDeclaredMethod("setNbClients", int.class);
             //Method setNbClients = simul.getMethod("setNbClients" , int.class);
-
             Method sim = simul.getDeclaredMethod("simuler", Monde.class);
-
             setNbClients.invoke(objSimulation, 4);
             sim.invoke(objSimulation, m);
         } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
