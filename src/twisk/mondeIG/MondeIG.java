@@ -10,7 +10,6 @@ import twisk.outils.FabriqueIdentifiant;
 import twisk.simulation.Client;
 import twisk.simulation.GestionnaireClients;
 import twisk.vues.Observateur;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -32,6 +31,7 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> , Observa
     private ArrayList<EtapeIG>listentree=new ArrayList<>(10);
     private ArrayList<EtapeIG>listsortie=new ArrayList<>(10);
     private PointDeControleIG pointselect;
+    private GestionnaireClients gestClients;
     private int nbClients =5;
     private CorrespondanceEtapes correspondanceEtapes ;
 
@@ -94,12 +94,10 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> , Observa
         if(p1.getetape() == p2.getetape()) {
             throw new ExceptionsArcMemeEtape();
         }
-        //for (ArcIG e : arclist) {
-            if (/*p1.getetape().posX==p2.getetape().posY */p1.getetape() == p2.getetape()) {
-                throw new ExceptionExistArc();
-            }
-        //}
-        ArcIG monarc = new ArcIG(p1,p2);
+        if(p1.getPosX()== p2.getPosX() && p1.getPosY()== p2.getPosY()){
+            throw new ExceptionsArcMemeEtape();
+        }
+       ArcIG monarc = new ArcIG(p1,p2);
         arclist.add(monarc);
     }
     /**
@@ -339,6 +337,13 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> , Observa
         e.printStackTrace();
        }
         return Objects.requireNonNull(gest).getLClients();
+    }
+    public Iterator<Client> iteratorClients(){
+        if(gestClients == null)
+            return null;
+        else{
+            return gestClients.iterator();
+        }
     }
 
 }

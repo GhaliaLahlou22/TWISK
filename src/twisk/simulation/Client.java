@@ -1,19 +1,23 @@
 package twisk.simulation;
 
 import twisk.monde.Etape;
-import twisk.monde.Monde;
+
 
 public class Client {
-    int numeroClient ;
-    int rang ;
-    Etape etape ;
-
-    public Etape getEtape() {
-        return etape;
-    }
+    private int numeroClient ;
+    private int rang ;
+    private Etape etape ;
 
     public Client(int numero){
         this.numeroClient=numero;
+
+    }
+    public int getRang() {
+        return rang;
+    }
+
+    public Etape getEtape() {
+        return etape;
     }
     public  void AllerA(Etape etape,int rang){
         this.rang=rang;

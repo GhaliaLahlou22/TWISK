@@ -1,6 +1,8 @@
 package twisk.monde;
 
 import twisk.outils.FabriqueNumero;
+import twisk.simulation.Client;
+import twisk.simulation.GestionnaireClients;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -145,6 +147,10 @@ public class Monde implements Iterable<Etape>{
     public void reset(){
         gestEtapes.reset();
     }
+    /**
+     * Iterator sur les clients du monde
+     * @return itérateur des clients, s'ils existent.
+     */
 
 
 

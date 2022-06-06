@@ -13,7 +13,6 @@ public class EcouteurDesselectionner implements  EventHandler<ActionEvent> {
      */
     public EcouteurDesselectionner(MondeIG  monde){
         this.monde = monde;
-
     }
 
     @Override

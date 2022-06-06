@@ -3,6 +3,7 @@ package twisk.vues;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -12,6 +13,7 @@ import twisk.mondeIG.EtapeIG;
 import twisk.mondeIG.MondeIG;
 
 import java.util.Objects;
+import java.util.Optional;
 
 public abstract class VueEtapeIG extends VBox implements Observateur {
     protected MondeIG monde;
@@ -75,6 +77,15 @@ public abstract class VueEtapeIG extends VBox implements Observateur {
                 sortie.setAlignment(Pos.TOP_RIGHT);
                 logo.getChildren().add(sortie);
 
+            }
+            if ( this.etig.isSortie() && etig.estUnGuichet()) {
+                TextInputDialog n = new TextInputDialog("");
+                n.setContentText("Inserer le nouveau nom : ");
+                n.setHeaderText("Renommer l'activitée");
+                n.setTitle("Impossible");
+                Optional<String> affichage = n.showAndWait();
+                affichage.ifPresent(nometp -> {monde.renommerlaselection(nometp) ;});
+                monde.notifierObservateurs();
             }
         }
         //logo.setAlignment(Pos.TOP_RIGHT);
