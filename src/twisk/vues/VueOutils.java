@@ -1,11 +1,14 @@
 package twisk.vues;
 
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
 import twisk.ecouteurs.EcouteurBouton;
+import twisk.ecouteurs.EcouteurSimulation;
+import twisk.exceptions.MondeException;
 import twisk.mondeIG.MondeIG;
 
 import java.util.Objects;
@@ -20,7 +23,7 @@ public class VueOutils extends TilePane implements Observateur {
      * Constructeur de VueOutils
      * @param monde
      */
-    public VueOutils(MondeIG monde){
+    public VueOutils(MondeIG monde)  {
         this.Monde =monde;
         Tooltip tool =new Tooltip("Ajouter une activite");
         Tooltip tool1 =new Tooltip("Ajouter un guichet");
@@ -30,7 +33,7 @@ public class VueOutils extends TilePane implements Observateur {
         this.AddBouton3 = new Button("");
         this.AddBouton.setGraphic(new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/activite.png")), 40, 40, true, true)));
         this.AddBouton2.setGraphic(new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/guichet.png")), 40, 40, true, true)));
-        this.AddBouton3.setGraphic(new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/simulation.png")), 40, 40, true, true)));
+      //  this.AddBouton3.setGraphic(new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/simulation.png")), 40, 40, true, true)));
         this.AddBouton.setId("boutton en plus");
         this.AddBouton2.setId("boutton en plus");
         this.AddBouton3.setId("boutton en plus");
@@ -40,8 +43,11 @@ public class VueOutils extends TilePane implements Observateur {
         this.AddBouton.setOnAction(new EcouteurBouton(monde,"activite"));
         this.AddBouton2.setOnAction(new EcouteurBouton(monde,"guichet"));
         this.AddBouton3.setOnAction(new EcouteurBouton(monde,"Simulation"));
+        AddBouton3.setOnAction(new EcouteurSimulation(this.Monde));
         this.getChildren().addAll(AddBouton,AddBouton2,AddBouton3);
         this.Monde.ajouterObservateur(this);
+
+
     }
 
     /**
