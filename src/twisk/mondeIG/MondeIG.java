@@ -20,6 +20,10 @@ import java.util.Objects;
 
 public class MondeIG extends SujetObserve implements Iterable<EtapeIG> , Observateur {
 
+    public HashMap<String, EtapeIG> getetapes() {
+        return etapes;
+    }
+
     private HashMap<String, EtapeIG>etapes=new HashMap<>(10) ;
     private ArrayList<EtapeIG> selectedEtape = new ArrayList<>(10);
     private ArrayList<ArcIG> selectedArc = new ArrayList<>(10);
@@ -30,6 +34,11 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> , Observa
     private PointDeControleIG pointselect;
     private int nbClients =5;
     private CorrespondanceEtapes correspondanceEtapes ;
+
+    public Object getSimul() {
+        return simul;
+    }
+
     private transient Object simul;
 
 
@@ -203,9 +212,28 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> , Observa
      * Fonction qui supprime l'activité selectionnée
      */
     public void SuppEtape() {
-             for (EtapeIG et : selectedEtape ) {
-                 etapes.remove(et.getIdentiant());}
-       }
+        Iterator<EtapeIG> iterstep = iterator();
+        Iterator<ArcIG> iterarc = iteratorarc();
+        while (iterstep.hasNext()) {
+            EtapeIG et = iterstep.next();
+
+            if (et.getselectionner()) {
+                for (EtapeIG e: getetapes().values())
+                    e.getSuccesseur().remove(et);
+                listentree.remove(et);
+                listsortie.remove(et);
+                iterstep.remove();
+            }
+        }
+        while (iterarc.hasNext()) {
+            ArcIG bow = iterarc.next();
+            if ( bow.getpos(1).getetape().getselectionner() || bow.getpos(0).getetape().getselectionner()) {
+                iterarc.remove();
+            }
+        }
+        notifierObservateurs();
+
+    }
     /**
      * Fonction qui supprime l'arc selectionné
      */
@@ -229,7 +257,7 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> , Observa
         } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
-notifierObservateurs();
+        notifierObservateurs();
     }
 
     private void verifierMondeIG() throws MondeException {
@@ -302,14 +330,15 @@ notifierObservateurs();
    notifierObservateurs();
     }
 
-    public ArrayList<Client> getClients() {
-        GestionnaireClients gestClient = null;
+    public ArrayList<Client> getClient() {
+        GestionnaireClients gest =null;
         try {
-            Method m = simul.getClass().getDeclaredMethod("getGestclients");
-            gestClient = (GestionnaireClients) m.invoke(simul);
-        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-            e.printStackTrace();
-        }
-        return Objects.requireNonNull(gestClient).getClients();
+            Method met = simul.getClass().getDeclaredMethod("get");
+            gest = (GestionnaireClients) met.invoke(simul);
+       } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+        e.printStackTrace();
+       }
+        return Objects.requireNonNull(gest).getLClients();
     }
+
 }

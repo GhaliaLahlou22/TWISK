@@ -40,11 +40,13 @@ public class VueMondeIG extends Pane implements Observateur {
         this.Monde.ajouterObservateur(this);
     }
     public void addClientActivite(HBox h,EtapeIG step ){
-        for (Client clt : Monde.getClients()) {
+         if(Monde.getSimul() != null) {
+        for (Client clt : Monde.getClient()) {
             if (Monde.getcorrespondance().get(step).equals(clt.getEtape())) {
                 VueClient v = new VueClient(clt);
                 h.getChildren().add(v);
             }
+        }
         }
 
     }

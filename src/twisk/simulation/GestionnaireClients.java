@@ -44,7 +44,7 @@ public class GestionnaireClients  implements Iterable<Client>{
         return clients.iterator();
     }
 
-    public ArrayList<Client> getClients() {
+    public ArrayList<Client> getLClients() {
         return clients;
     }
 }
