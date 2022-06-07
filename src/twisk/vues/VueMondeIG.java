@@ -22,8 +22,6 @@ public class VueMondeIG extends Pane implements Observateur {
      */
     public VueMondeIG(MondeIG monde) {
         this.Monde = monde;
-        this.etg=etg;
-        this.client=client;
         for (EtapeIG etape : Monde) {
             if (etape.estUneActivite()) {
                 VueEtapeIG vue = new VueActiviteIG(Monde, etape);
