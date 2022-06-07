@@ -31,8 +31,8 @@ public class VueOutils extends TilePane implements Observateur {
         this.AddBouton = new Button("");
         this.AddBouton2 = new Button("");
         this.AddBouton3 = new Button("");
-        this.AddBouton.setGraphic(new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/activite.png")), 40, 40, true, true)));
-        this.AddBouton2.setGraphic(new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/guichet.png")), 40, 40, true, true)));
+        this.AddBouton.setGraphic(new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/addA.png")), 40, 40, true, true)));
+        this.AddBouton2.setGraphic(new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/addG.png")), 40, 40, true, true)));
         this.AddBouton3.setGraphic(new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/simulation.png")), 40, 40, true, true)));
         this.AddBouton.setId("boutton en plus");
         this.AddBouton2.setId("boutton en plus");
