@@ -20,4 +20,5 @@ public class EcouteurDesselectionner implements  EventHandler<ActionEvent> {
         monde.SuppSelect();
         monde.notifierObservateurs();
     }
+
 }
