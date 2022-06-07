@@ -22,6 +22,7 @@ public class VueMenu extends MenuBar implements Observateur {
       Menu Monde = new Menu("Monde");
       Menu PARAMETRE = new Menu("Paramètre");
 
+      MenuItem jeton = new MenuItem("Nombre de Jetons");
       MenuItem save = new MenuItem("Enregistrer");
       MenuItem quitter =new MenuItem("Quitter");
       MenuItem supp =new MenuItem("Supprimer");
@@ -35,7 +36,7 @@ public class VueMenu extends MenuBar implements Observateur {
       Fichier.getItems().addAll(quitter);
       Edition.getItems().addAll(supp,rename,effacer,save);
       Monde.getItems().addAll(entree,sortie);
-      PARAMETRE.getItems().addAll(delai,ecarttemps);
+      PARAMETRE.getItems().addAll(delai,ecarttemps, jeton);
 
       this.getMenus().addAll(Fichier,Edition,Monde,PARAMETRE);
       Fichier.setStyle("-fx-text-fill:#370028") ;
@@ -47,6 +48,7 @@ public class VueMenu extends MenuBar implements Observateur {
       save.setOnAction(new EcouteurEnregistrer());
       entree.setOnAction(new EcouteurEntree(m));
       sortie.setOnAction(new EcouteurSortie(m));
+      jeton.setOnAction(new EcouteurNbJetons(m));
       delai.setOnAction(new EcouteurTemps(m));
       ecarttemps.setOnAction(new EcouteurEcartTemps(m));
 

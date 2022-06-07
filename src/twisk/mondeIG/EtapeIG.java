@@ -23,6 +23,10 @@ public abstract class EtapeIG extends BouleIG implements Iterable<PointDeControl
     protected int nbJeton;
     private final ArrayList<EtapeIG> successeur;
 
+    public void setNbJeton(int nbJeton) {
+        this.nbJeton = nbJeton;
+    }
+
     /**
      * Constructeur de EtapeIG
      * @param nom
