@@ -12,6 +12,10 @@ import java.util.Optional;
 public class EcouteurTemps implements EventHandler<ActionEvent> {
     private MondeIG m;
 
+    /**
+     * ecouteur du temps
+     * @param monde
+     */
     public EcouteurTemps(MondeIG monde){
         this.m=monde;
     }

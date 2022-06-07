@@ -1,12 +1,14 @@
 package twisk.monde;
 
 public class SasEntree extends Activite {
+
     /**
      * Constructeur de sas entree
      */
     public SasEntree(){
         super("entree");
     }
+
 
     /**
      * Fonction qui affiche l'entree

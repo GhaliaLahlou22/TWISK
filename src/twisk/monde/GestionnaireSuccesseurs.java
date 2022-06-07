@@ -3,7 +3,6 @@ package twisk.monde;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
-import java.util.List;
 
 public class GestionnaireSuccesseurs implements Iterable<Etape>{
     /*
@@ -41,6 +40,7 @@ public class GestionnaireSuccesseurs implements Iterable<Etape>{
     public Iterator<Etape> iterator() {
       return liste_etapes.iterator();
     }
+
     @Override
     /**
      * Fonction qui affiche le nom pour chaque etapes

@@ -11,8 +11,8 @@ import java.util.Optional;
  * EcouteurEcartTemps
  */
 public class EcouteurEcartTemps implements EventHandler<ActionEvent> {
-    private MondeIG monde;
 
+    private MondeIG monde;
     public EcouteurEcartTemps(MondeIG monde){
         this.monde=monde;
     }

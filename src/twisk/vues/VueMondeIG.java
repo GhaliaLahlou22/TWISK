@@ -13,7 +13,6 @@ import java.util.Iterator;
 public class VueMondeIG extends Pane implements Observateur {
     private  MondeIG Monde;
     private  EtapeIG etg;
-    private Client client;
 
 
     /**
@@ -40,44 +39,25 @@ public class VueMondeIG extends Pane implements Observateur {
         this.setOnDragOver(new EcouteurDrapOver());
         this.Monde.ajouterObservateur(this);
     }
-    public void addClientActivite(){
-         if(Monde.getSimul() != null) {
-       /* for (Client clt : Monde.getClient()) {
-            if (Monde.getcorrespondance().get(step).equals(clt.getEtape())) {
-                VueClient v = new VueClient(clt);
-                h.getChildren().add(v);
-            }
-        }
-        }*/
-             double x = 0, y;
-             //MondeIG monde = (MondeIG) Monde;
-             Iterator<Client> itClients = Monde.iteratorClients();
-             if (itClients != null) {
-                 while (itClients.hasNext()) {
-                     Client client = itClients.next();
-                     for (EtapeIG etape : Monde) {
-                         //if (!client.getEtape() && !client.getEtape().estUnSasDeSortie()) {
-                         if (!client.getEtape().estUneActivite()) {
-                             Circle circleClient = new Circle(5.0);
-                             circleClient.setFill(Color.RED);
-                             getChildren().add(circleClient);
-                             //affichage dans le cas où c'est une activité (ou une activité restreinte)
-                             if (etape.estUneActivite() || etape.estUneActiviteRestreinte()) {
-                                 x = Math.random() * ((etape.getPosX() + etape.getlargeur() - 20) - (etape.getPosX() + 20)) + (etape.getPosX() + 20);
-                                 y = Math.random() * ((etape.getPosY() + etape.gethauteur() - 15) - (etape.getPosY() + 50)) + (etape.getPosY() + 50);
-                             } else {
-                                 y = (etape.getPosY() + etape.gethauteur() - 19);
-                                 if (client.getRang() > 10) {
-                                     circleClient.setVisible(false);
-                                 }
-                             }
-                             circleClient.setCenterX(x);
-                             circleClient.setCenterY(y);
-                         }
-                     }
-                 }
-             }
-         }
+    /* for (Client clt : Monde.getClient()) {
+           if (Monde.getcorrespondance().get(step).equals(clt.getEtape())) {
+               VueBouleIG v = new VueBouleIG(clt);
+               h.getChildren().add(v);
+           }
+       }
+       }*/
+    public void addClientActivite(EtapeIG step, HBox h){
+       if(Monde.getSimul() != null){
+           if(Monde.lasimulationacommencer()){
+               for (Client clt : Monde.getClient()) {
+                   if (Monde.getcorrespondance().get(step).equals(clt.getEtape())) {
+                       VueBouleIG v = new VueBouleIG(clt);
+                       h.getChildren().add(v);
+                   }
+               }
+
+           }
+       }
     }
 
     /**
@@ -94,18 +74,22 @@ public class VueMondeIG extends Pane implements Observateur {
         for (EtapeIG etape : Monde) {
             if (etape.estUneActivite()) {
                 VueEtapeIG vue = new VueActiviteIG(Monde, etape);
-             // addClientActivite(((VueActiviteIG) vue).getHbox() , etape);
-                addClientActivite();
+               // addClientActivite(etape, ((VueActiviteIG) vue).getHbox());
+
                 this.getChildren().add(vue);
             }
             else {
                 VueEtapeIG vue1 = new VueGuichetIG(Monde, etape);
+             //   addClientActivite(etape, ((VueActiviteIG) vue1).getHbox());
                 this.getChildren().add(vue1);
             }
             for(PointDeControleIG ptc : etape){
                 VuePointDeControleIG point=new VuePointDeControleIG(Monde,ptc,etape);
                 this.getChildren().add(point);
             }
+        /*   for(Client clt : Monde.getClient()){
+                this.getChildren().add(new VueBouleIG(clt));
+            }*/
         }
     }
 }

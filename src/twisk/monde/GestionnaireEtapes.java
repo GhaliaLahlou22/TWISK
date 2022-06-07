@@ -73,9 +73,11 @@ public class GestionnaireEtapes implements Iterable<Etape> {
         return liste_Steps.get(i);
     }
 
+    /**
+     * La fonction qui fais la mise a jour de la librairie LibTwisk.so
+     */
     public void reset(){
         FabriqueNumero fab = FabriqueNumero.getInstance();
         fab.reset();
     }
-
 }

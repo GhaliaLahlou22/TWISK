@@ -28,12 +28,27 @@ public class ArcIG extends Arc {
     public PointDeControleIG getpos(int cpt){
         return pointcont[cpt];
     }
+
+    /**
+     * La  getter qui permet de selectionner un arc
+     * @return
+     */
     public boolean getselectionnerarc(){
         return selectionnerarc;
     }
+
+    /**
+     * setter de seletionne arc
+     * @param selectionnerarc
+     */
     public void setSelectionnerarc(boolean selectionnerarc) {
         this.selectionnerarc = selectionnerarc;
     }
+
+    /**
+     * La fonction qui rend un boolean si un arc est selectionné ou non
+     * @return
+     */
     public boolean isSelectionnerarc() {
         return selectionnerarc;
     }

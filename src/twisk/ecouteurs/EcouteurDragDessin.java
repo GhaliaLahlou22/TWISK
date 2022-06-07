@@ -11,6 +11,11 @@ public class EcouteurDragDessin  implements EventHandler<DragEvent> {
     private MondeIG monde;
     private VueMondeIG vuem;
 
+    /**
+     * Ecouteur de dragdessin
+     * @param monde
+     * @param vue
+     */
     public EcouteurDragDessin(MondeIG monde , VueMondeIG vue){
         this.monde = monde;
         this.vuem = vue;

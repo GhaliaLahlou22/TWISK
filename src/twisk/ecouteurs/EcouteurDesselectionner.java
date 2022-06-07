@@ -15,6 +15,10 @@ public class EcouteurDesselectionner implements  EventHandler<ActionEvent> {
         this.monde = monde;
     }
 
+    /**
+     * fonction qui fais reagir la selection
+     * @param actionEvent
+     */
     @Override
     public void handle(ActionEvent actionEvent) {
         monde.SuppSelect();

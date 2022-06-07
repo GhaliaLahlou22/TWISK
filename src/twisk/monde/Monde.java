@@ -140,18 +140,21 @@ public class Monde implements Iterable<Etape>{
         return gestEtapes.getEtapes(i).getNom();
     }
 
+    /**
+     * La fonction qui permet de recuperer
+     * @param i
+     * @return
+     */
+
     public  Etape getEtape(int i){
         return gestEtapes.getEtapes(i);
     }
 
+    /**
+     * La fonction qui fais la mise a jour des compteur relier a la librairie de twisk
+     */
     public void reset(){
         gestEtapes.reset();
     }
-    /**
-     * Iterator sur les clients du monde
-     * @return itérateur des clients, s'ils existent.
-     */
-
-
 
 }

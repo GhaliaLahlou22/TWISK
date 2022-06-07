@@ -7,14 +7,13 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Random;
 
-public abstract class EtapeIG implements Iterable<PointDeControleIG>{
+public abstract class EtapeIG extends BouleIG implements Iterable<PointDeControleIG>{
     protected String nom;
     protected String identiant;
     protected int posX;
     protected int posY;
     protected int largeur;
     protected int hauteur;
-    private final ArrayList<EtapeIG> successeur;
     protected PointDeControleIG[] ptcont;
     protected boolean selectionner;
     protected boolean entree;
@@ -22,6 +21,7 @@ public abstract class EtapeIG implements Iterable<PointDeControleIG>{
     protected int delai;
     protected int ecartTemps;
     protected int nbJeton;
+    private final ArrayList<EtapeIG> successeur;
 
     /**
      * Constructeur de EtapeIG
@@ -36,7 +36,7 @@ public abstract class EtapeIG implements Iterable<PointDeControleIG>{
         this.largeur=larg;
         this.hauteur=haut;
         this.ecartTemps=3;
-        this.delai=1;
+        this.delai=4;
         this.nbJeton=2;
         this.successeur = new ArrayList<>(5);
         Random r=new Random();
@@ -118,9 +118,20 @@ public abstract class EtapeIG implements Iterable<PointDeControleIG>{
    public int getPosX() {
        return posX;
    }
+
+
+    /**
+     * Setter de la position x
+     * @return
+     */
     public void setPosX(int posX) {
         this.posX = posX;
     }
+
+    /**
+     * Getter de l'identifiant de chaque etape
+     * @return
+     */
 
     public String getIdentiant() {
         return identiant;
@@ -133,6 +144,10 @@ public abstract class EtapeIG implements Iterable<PointDeControleIG>{
        return posY;
    }
 
+    /**
+     * Setter de la position y
+     * @return
+     */
     public void setPosY(int posY) {
         this.posY = posY;
     }
@@ -158,6 +173,11 @@ public abstract class EtapeIG implements Iterable<PointDeControleIG>{
         return Arrays.asList(ptcont).iterator();
     }
 
+
+    /**
+     * La fonction qui retourne un boolean qui une etape est selectionner ou pas
+     * @return
+     */
     public boolean isSelectionner() {
         return selectionner;
     }
@@ -194,16 +214,36 @@ public abstract class EtapeIG implements Iterable<PointDeControleIG>{
         this.delai = delai;
     }
 
+    /**
+     * Setter ecartTemps
+     * @param ecartTemps
+     */
     public void setEcartTemps(int ecartTemps) {
         this.ecartTemps = ecartTemps;
     }
 
+    /**
+     * Setter de la sortie
+     * @param sortie
+     */
     public void setSortie(boolean sortie) {
         Sortie = sortie;
     }
+
+    /**
+     * getter hauteur
+     */
     public int gethauteur(){return hauteur;}
+
+    /**
+     * getter largeur
+     */
     public int getlargeur(){return largeur;}
 
     public ArrayList<EtapeIG> getSuccesseur(){ return this.successeur; }
+
+    /**
+     * fonction qui vérifie si l'étape est une  activitée est restreinte
+     */
     public boolean estUneActiviteRestreinte(){ return false;}
 }

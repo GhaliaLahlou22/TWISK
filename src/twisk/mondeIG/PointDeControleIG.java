@@ -1,12 +1,6 @@
 package twisk.mondeIG;
 
-/*
- point de contrôle
- idf (chaine de char)
- etape auqeul il est rattache
- chaque ativite a 4 points de controle memorise dans une collection dans etapeig
- ils sont places au milieux des 4 cotes
- */
+
 public class PointDeControleIG {
     private EtapeIG et;
     private int posX;

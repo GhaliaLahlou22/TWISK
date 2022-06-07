@@ -57,6 +57,10 @@ public class Activite extends Etape {
         return this.nom+" : "+nbSuccesseur()+" successeur(s) - "+gest_Succ.toString();
     }
 
+    /**
+     *
+     * @return
+     */
     public String toC() {
         int i =1 ;
         StringBuilder strC = new StringBuilder();

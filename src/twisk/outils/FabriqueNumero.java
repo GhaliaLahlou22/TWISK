@@ -44,6 +44,11 @@ public class FabriqueNumero  implements Serializable {
         cptSemaphore++;
         return cptSemaphore - 1;
     }
+
+    /**
+     * getter de numero de la librairie
+     * @return
+     */
     public int getnumlib(){
         numlibrairie++;
         return numlibrairie;

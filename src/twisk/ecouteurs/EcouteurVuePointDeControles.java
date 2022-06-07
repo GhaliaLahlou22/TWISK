@@ -7,6 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 import twisk.exceptions.ExceptionExistArc;
+import twisk.exceptions.ExceptionGuichet;
 import twisk.exceptions.ExceptionsArcMemeEtape;
 import twisk.mondeIG.MondeIG;
 import twisk.mondeIG.PointDeControleIG;
@@ -32,7 +33,7 @@ public class EcouteurVuePointDeControles implements EventHandler<MouseEvent> {
     public void handle(MouseEvent mousesnvent ) {
         try {
             monde.formarc(pointDeControle);
-        } catch (ExceptionsArcMemeEtape | ExceptionExistArc e) {
+        } catch (ExceptionsArcMemeEtape | ExceptionExistArc | ExceptionGuichet e  ) {
             Alert erreur  = new Alert(Alert.AlertType.ERROR);
             erreur.setTitle("Authentification Erreur");
             erreur.setContentText(e.getMessage());

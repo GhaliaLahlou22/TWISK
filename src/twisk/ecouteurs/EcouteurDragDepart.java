@@ -22,7 +22,6 @@ public class EcouteurDragDepart implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent mEvent) {
         Dragboard dragb = vue.startDragAndDrop(TransferMode.MOVE);
-
         ClipboardContent clc = new ClipboardContent();
         clc.putString(vue.getId());
         dragb.setContent(clc);

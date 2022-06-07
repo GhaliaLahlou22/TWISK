@@ -1,6 +1,7 @@
 package twisk.monde;
 
 public class SasSortie extends Activite {
+
     /**
      * Constructeurs de sas sortie
      */

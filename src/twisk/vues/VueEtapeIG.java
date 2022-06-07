@@ -43,19 +43,17 @@ public abstract class VueEtapeIG extends VBox implements Observateur {
             if (this.etig.isSelectionner()) {
                 this.setStyle("-fx-border-color: #BABABA;-fx-background-color: #83A697;-fx-background-insets: 0 0 -1 0, 0, 1, 2;-fx-background-insets:6; -fx-border-radius:7;-fx-background-radius: 3px, 3px, 2px, 1px");
             }
-
         } else {
             this.etig = etape;
             this.setId(etig.getIdentiant());
             lb = new Label(etape.getNom() + " : "  + etig.getNbjetons() + " jetons");
-            lb.setPrefSize(250, 2);
+            lb.setPrefSize(150, 2);
             lb.setStyle("-fx-alignment:center ;-fx-text-fill: blue");
             this.setStyle("-fx-border-color: #696969;-fx-background-insets: 0 0 -1 0, 0, 1, 2;-fx-background-insets:6; -fx-border-radius:7;-fx-background-radius: 3px, 3px, 2px, 1px");
             this.setOnMouseClicked(new EcouteurSelectEtape(this, monde));
             this.setOnDragDetected(new EcouteurDragDepart(this));
             this.relocate(etape.getPosX(),etape.getPosY());
             this.setPrefSize(etape.getlargeur(),etape.gethauteur());
-            //this.setPrefSize(12,90);
             this.getChildren().addAll(lb);
             if (this.etig.isSelectionner()) {
                 this.setStyle("-fx-border-color: #BABABA;-fx-background-color: #83A697;-fx-background-insets: 0 0 -1 0, 0, 1, 2;-fx-background-insets:6; -fx-border-radius:7;-fx-background-radius: 3px, 3px, 2px, 1px");
@@ -63,32 +61,39 @@ public abstract class VueEtapeIG extends VBox implements Observateur {
         }
         entrer_sortie();
     }
+
+    /**
+     * la fonction qui fais le style aux entrées et sorties
+     */
     public void entrer_sortie() {
         HBox logo = new HBox();
 
         if ( this.etig.isEntree()) {
             Label entree = new Label("");
             entree.setGraphic(new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/entree.png")))));
+            entree.setPadding(new Insets(0,5,0,0));
             logo.getChildren().add(entree);
         }else {
             if ( this.etig.isSortie() && etig.estUneActivite()) {
                 Label sortie = new Label("");
-                sortie.setGraphic(new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/sortie2.png")))));
-                sortie.setAlignment(Pos.TOP_RIGHT);
+                sortie.setGraphic(new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/sortie.png")))));
+                this.setAlignment(Pos.TOP_RIGHT);
                 logo.getChildren().add(sortie);
-
             }
-            if ( this.etig.isSortie() && etig.estUnGuichet()) {
-                TextInputDialog n = new TextInputDialog("");
-                n.setContentText("Inserer le nouveau nom : ");
-                n.setHeaderText("Renommer l'activitée");
-                n.setTitle("Impossible");
-                Optional<String> affichage = n.showAndWait();
-                affichage.ifPresent(nometp -> {monde.renommerlaselection(nometp) ;});
-                monde.notifierObservateurs();
+            else {
+                if (etig.isEntree() && etig.isSortie() && etig.estUneActivite()) {
+                    System.out.println("hhhhhhhh");
+                    Label sortie = new Label("");
+                    Label entree = new Label("");
+                    sortie.setGraphic(new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/sortie.png")))));
+                    entree.setGraphic(new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/entree.png")))));
+                    sortie.setAlignment(Pos.TOP_RIGHT);
+                    entree.setPadding(new Insets(5, 5, 5, 5));
+                    logo.getChildren().addAll(entree, sortie);
+                }
             }
         }
-        //logo.setAlignment(Pos.TOP_RIGHT);
+        logo.setAlignment(Pos.TOP_RIGHT);
         logo.setPadding(new Insets(1,1,1,1));
         this.getChildren().add(logo);
     }

@@ -13,6 +13,10 @@ public class EcouteurSimulation implements EventHandler<ActionEvent> {
 
     private MondeIG m ;
 
+    /**
+     * Ecouteur de simulation
+     * @param monde
+     */
     public EcouteurSimulation(MondeIG monde){
         this.m = monde;
     }

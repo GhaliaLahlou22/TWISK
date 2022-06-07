@@ -24,6 +24,11 @@ public class ActiviteIG extends EtapeIG {
     public boolean estUneActivite(){
         return true;
     }
+
+    /**
+     * La fonction qui verifie si une activitée est restrainte ou pas
+     * @return
+     */
     public boolean estUneActiviteRestreinte(){
         return rest;
     }

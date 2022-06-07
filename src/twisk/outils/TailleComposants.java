@@ -39,11 +39,7 @@ public class TailleComposants {
     public int getLargeur(){
         return largeur;
     }
-    public int getHauteurG(){
-        return hauteurG;
-    }
-    public int getLargeurG(){
-        return largeurG;
-    }
+
+
 
 }

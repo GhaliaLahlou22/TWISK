@@ -8,6 +8,10 @@ import twisk.mondeIG.MondeIG;
 public class EcouteurSortie implements EventHandler<ActionEvent> {
     private MondeIG monde;
 
+    /**
+     * Ecouteur de la sortie
+     * @param monde
+     */
     public EcouteurSortie(MondeIG monde){
         this.monde=monde;
     }

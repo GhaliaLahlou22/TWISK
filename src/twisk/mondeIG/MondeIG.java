@@ -2,6 +2,7 @@ package twisk.mondeIG;
 
 import twisk.ClientTwisk;
 import twisk.exceptions.ExceptionExistArc;
+import twisk.exceptions.ExceptionGuichet;
 import twisk.exceptions.ExceptionsArcMemeEtape;
 import twisk.exceptions.MondeException;
 import twisk.monde.*;
@@ -22,7 +23,6 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> , Observa
     public HashMap<String, EtapeIG> getetapes() {
         return etapes;
     }
-
     private HashMap<String, EtapeIG>etapes=new HashMap<>(10) ;
     private ArrayList<EtapeIG> selectedEtape = new ArrayList<>(10);
     private ArrayList<ArcIG> selectedArc = new ArrayList<>(10);
@@ -34,18 +34,13 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> , Observa
     private GestionnaireClients gestClients;
     private int nbClients =5;
     private CorrespondanceEtapes correspondanceEtapes ;
-
     public Object getSimul() {
         return simul;
     }
-
     private transient Object simul;
 
 
-/**
- * TOOOOOO  DOOOO
- * Les condition des exceptions dons la fonction de ajouter(p1,p2)
- */
+
     /**
      * Constructeur de MondeIG
      */
@@ -76,6 +71,7 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> , Observa
         this.notifierObservateurs();
     }
 
+
     /**
      * Fonction nbEtape qui rend le numero de l'etape
      * @return
@@ -90,22 +86,26 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> , Observa
      * @param p2
      * @throws ExceptionsArcMemeEtape
      */
-    public void ajouter(PointDeControleIG p1, PointDeControleIG p2) throws ExceptionsArcMemeEtape,ExceptionExistArc {
+    public void ajouter(PointDeControleIG p1, PointDeControleIG p2) throws ExceptionsArcMemeEtape,ExceptionExistArc, ExceptionGuichet {
         if(p1.getetape() == p2.getetape()) {
             throw new ExceptionsArcMemeEtape();
         }
         if(p1.getPosX()== p2.getPosX() && p1.getPosY()== p2.getPosY()){
             throw new ExceptionsArcMemeEtape();
         }
+        if(p1.getetape().estUnGuichet() && p2.getetape().estUnGuichet()){
+            throw new ExceptionGuichet();
+        }
        ArcIG monarc = new ArcIG(p1,p2);
         arclist.add(monarc);
     }
+
     /**
      * Fonction qui permer d'ajouter les arc en deux points de controles
      * @param pt
      * @throws ExceptionsArcMemeEtape ,ExceptionExistArc
      */
-    public void formarc(PointDeControleIG pt) throws ExceptionsArcMemeEtape, ExceptionExistArc {
+    public void formarc(PointDeControleIG pt) throws ExceptionsArcMemeEtape, ExceptionExistArc,ExceptionGuichet {
         if (pointselect == null) {
             pointselect = pt;
         } else{
@@ -131,10 +131,19 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> , Observa
     public Iterator<ArcIG> iteratorarc() {
         return arclist.iterator();
     }
+
+    /**
+     * la fonction qui permet de renommer une etape
+     * @param str
+     */
     public  void renommerlaselection(String str){
       selectedEtape.get(0).setNom(str);
     }
 
+    /**
+     * La fonction qui permet d'ajouter une etape
+     * @param etp
+     */
    public void Ajouteretp(EtapeIG etp){
        if(!selectedEtape.contains(etp)){
            selectedEtape.add(etp);
@@ -145,6 +154,10 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> , Observa
        }
    }
 
+    /**
+     * La fonction qui permet d'ajouter un arc entre deux etapes
+     * @param arc
+     */
     public void AjouterArc(ArcIG arc){
         if(!selectedArc.contains(arc)){
             selectedArc.add(arc);
@@ -155,6 +168,9 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> , Observa
         }
     }
 
+    /**
+     * La fonction qui permet d'jouter une entrée
+     */
     public void AjouterEntree(){
         for (EtapeIG step : selectedEtape ) {
             if(listentree.contains(step)==true) {
@@ -241,6 +257,10 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> , Observa
         }
     }
 
+    /**
+     * La fonction qui permet de lancer  la simulation
+     * @throws MondeException
+     */
     public void simuler() throws MondeException {
         verifierMondeIG();
         Monde m = creerMonde();
@@ -258,6 +278,10 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> , Observa
         notifierObservateurs();
     }
 
+    /**
+     * La fonction qui permet de vérifier si le monde créé est correcte
+     * @throws MondeException
+     */
     private void verifierMondeIG() throws MondeException {
         if(listentree.size()<=0 || listsortie.size()<=0 || etapes.size()<=0){
             throw new MondeException() ;
@@ -284,6 +308,11 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> , Observa
         }
 
     }
+
+    /**
+     * La fonction qui permet de cree le monde
+     * @return
+     */
     private Monde creerMonde(){
         correspondanceEtapes = new CorrespondanceEtapes();
         Monde m = new Monde();
@@ -316,13 +345,38 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> , Observa
         }
         return m ;
     }
+
+    /**
+     * getter des clients
+     * @return
+     */
     public int getNbClients() {
         return nbClients;
     }
 
+    /**
+     * getter de la correspondance
+     * @return
+     */
     public CorrespondanceEtapes getcorrespondance(){
         return correspondanceEtapes;
 }
+
+public boolean lasimulationacommencer(){
+        boolean result =false;
+        try {
+            Method fct = simul.getClass().getDeclaredMethod("debutdesimulation");
+            result = (boolean) fct.invoke(simul);
+        }catch(IllegalAccessException | InvocationTargetException |NoSuchMethodException e){
+            e.printStackTrace();
+            }
+         return result;
+        }
+
+
+    /**
+     * LA fonction qui fais reagir le monde ig
+     */
     @Override
     public void reagir() {
    notifierObservateurs();
@@ -333,7 +387,7 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> , Observa
         try {
             Method met = simul.getClass().getDeclaredMethod("get");
             gest = (GestionnaireClients) met.invoke(simul);
-       } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+       } catch ( IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
         e.printStackTrace();
        }
         return Objects.requireNonNull(gest).getLClients();

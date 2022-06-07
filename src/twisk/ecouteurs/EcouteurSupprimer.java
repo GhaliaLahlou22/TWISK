@@ -8,6 +8,10 @@ import twisk.mondeIG.MondeIG;
 public class EcouteurSupprimer implements EventHandler<ActionEvent> {
     private MondeIG m;
 
+    /**
+     * Ecouteur de la suppression
+     * @param monde
+     */
     public EcouteurSupprimer(MondeIG monde){
         this.m=monde;
     }

@@ -3,13 +3,18 @@ package twisk.vues;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import twisk.monde.Monde;
+import twisk.mondeIG.BouleIG;
 import twisk.mondeIG.MondeIG;
 import twisk.simulation.Client;
 
-public class VueClient extends Circle implements Observateur {
+public class VueBouleIG extends Circle implements Observateur {
     private Client client;
 
- public VueClient(Client clients) {
+    /**
+     * Constructeur de vueclient
+     * @param clients
+     */
+ public VueBouleIG(Client clients) {
      this.client = clients;
      Circle cercle = new Circle();
      cercle.setRadius(4);
@@ -40,8 +45,9 @@ public class VueClient extends Circle implements Observateur {
      }
      if (client.getNumClient()%9  == 9) {
          this.setFill(Color.PINK);
-     }
- }
+     }}
+
+
     @Override
     public void reagir() {
 
