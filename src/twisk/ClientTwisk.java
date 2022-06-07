@@ -38,22 +38,20 @@ public class  ClientTwisk {
             Class<?> simul = ClassLoader.loadClass("twisk.simulation.Simulation");
             Object objSimulation = simul.getDeclaredConstructor().newInstance();
             Method setNbClients = simul.getDeclaredMethod("setNbClients", int.class);
-            //Method setNbClients = simul.getMethod("setNbClients" , int.class);
             Method sim = simul.getDeclaredMethod("simuler", Monde.class);
             setNbClients.invoke(objSimulation, 4);
             sim.invoke(objSimulation, m);
         } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
-            // throw new RuntimeException(e);
             e.printStackTrace();
         }
-        System.out.println("\n************* FIN *************");
+        System.out.println("\n************* FIN *************\n\n");
 
         Monde monde = new Monde();
-        Guichet guichett = new Guichet("ghalia", 2);
-        Activite act1t = new ActiviteRestreinte("kenza", 2, 1);
+        Guichet guichett = new Guichet("file", 2);
+        Activite act1t = new ActiviteRestreinte("piscine", 2, 1);
 
-        Etape etape1t = new Activite("mghaloucheee");
-        Etape etape2t = new Activite("kenzaaaaa");
+        Etape etape1t = new Activite("plage");
+        Etape etape2t = new Activite("balance");
 
         etape1t.ajouterSuccesseur(etape2t);
         etape2t.ajouterSuccesseur(guichett);
@@ -68,17 +66,12 @@ public class  ClientTwisk {
         try {
             ClassLoaderPerso ClassLoader2 = new ClassLoaderPerso(ClientTwisk.class.getClassLoader());
             Class<?> simul2 = ClassLoader2.loadClass("twisk.simulation.Simulation");
-
             Object objSimulation2 = simul2.getDeclaredConstructor().newInstance();
             Method setNbClients2 = simul2.getDeclaredMethod("setNbClients", int.class);
-            //Method setNbClients = simul.getMethod("setNbClients" , int.class);
-
             Method sim2 = simul2.getDeclaredMethod("simuler", Monde.class);
-
             setNbClients2.invoke(objSimulation2, 4);
             sim2.invoke(objSimulation2, monde);
         } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
-            // throw new RuntimeException(e);
             e.printStackTrace();
         }
     }}

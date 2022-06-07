@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Random;
 
-public abstract class EtapeIG extends BouleIG implements Iterable<PointDeControleIG>{
+public abstract class EtapeIG implements Iterable<PointDeControleIG>{
     protected String nom;
     protected String identiant;
     protected int posX;

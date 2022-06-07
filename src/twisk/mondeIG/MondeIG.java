@@ -279,6 +279,7 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> , Observa
         } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
+        System.out.println("\n************* FIN *************\n\n");
         notifierObservateurs();
     }
 

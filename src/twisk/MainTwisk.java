@@ -16,7 +16,7 @@ Tooltip
 public class MainTwisk extends Application{
     @Override
     public void start(Stage stage) throws Exception {
-        stage.setTitle("TwiskIG");
+        stage.setTitle("Twisk");
         MondeIG monde = new MondeIG();
         VueMondeIG vuemondeig= new VueMondeIG(monde);
         VueOutils vueoutils = new VueOutils(monde);

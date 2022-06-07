@@ -2,8 +2,6 @@ package twisk.vues;
 
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import twisk.ecouteurs.EcouteurDragDessin;
 import twisk.ecouteurs.EcouteurDrapOver;
 import twisk.mondeIG.*;
@@ -55,7 +53,6 @@ public class VueMondeIG extends Pane implements Observateur {
                        h.getChildren().add(v);
                    }
                }
-
            }
        }
     }
@@ -87,9 +84,6 @@ public class VueMondeIG extends Pane implements Observateur {
                 VuePointDeControleIG point=new VuePointDeControleIG(Monde,ptc,etape);
                 this.getChildren().add(point);
             }
-        /*   for(Client clt : Monde.getClient()){
-                this.getChildren().add(new VueBouleIG(clt));
-            }*/
         }
     }
 }

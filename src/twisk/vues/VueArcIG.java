@@ -39,8 +39,8 @@ public class VueArcIG extends Pane implements Observateur {
         Polyline fleche = new Polyline();
         fleche.getPoints().addAll(
                 posX2, posY2,
-                posX2+15, posY2+5,
-                posX2+15, posY2-5,
+                posX2+16.0, posY2+5.0,
+                posX2+16.0, posY2-5.0,
                 posX2,posY2);
         this.setPickOnBounds(false);
         fleche.setStyle("-fx-stroke: purple");

@@ -2,9 +2,6 @@ package twisk.vues;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import twisk.monde.Monde;
-import twisk.mondeIG.BouleIG;
-import twisk.mondeIG.MondeIG;
 import twisk.simulation.Client;
 
 public class VueBouleIG extends Circle implements Observateur {

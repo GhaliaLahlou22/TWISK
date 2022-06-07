@@ -82,7 +82,6 @@ public abstract class VueEtapeIG extends VBox implements Observateur {
             }
             else {
                 if (etig.isEntree() && etig.isSortie() && etig.estUneActivite()) {
-                    System.out.println("hhhhhhhh");
                     Label sortie = new Label("");
                     Label entree = new Label("");
                     sortie.setGraphic(new ImageView(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/sortie.png")))));

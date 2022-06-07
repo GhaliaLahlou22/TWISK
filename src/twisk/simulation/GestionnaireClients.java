@@ -47,13 +47,6 @@ public class GestionnaireClients  implements Iterable<Client>{
 
     }
 
-    /**
-     *La fonction qui permet de faire le nettoyage des clients
-     */
-    public void nettoyer(){
-        clients.clear();
-
-    }
 
     /**
      * Iterrateur afin de parcourir tous les clients
