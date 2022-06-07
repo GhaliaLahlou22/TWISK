@@ -20,7 +20,7 @@ public class EcouteurEnregistrer implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent) {
         FileChooser file = new FileChooser();
         file.setTitle("Enregistrer");
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Twisk files (*.twisk)", "*.twisk");
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Twisk files (*.twisk)", "*.json");
         file.getExtensionFilters().add(extFilter);
        File filee = file.showSaveDialog(new Stage());
         if (filee != null) {
