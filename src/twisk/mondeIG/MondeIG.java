@@ -174,6 +174,10 @@ public class MondeIG extends SujetObserve implements Iterable<EtapeIG> , Observa
     public void Delai(int delai) {
         this.selectedEtape.get(0).setDelai(delai);
     }
+
+    public void setNbJetons(Integer nb) {
+        this.selectedEtape.get(0).setNbJeton(nb);
+    }
     /**
      * Fonction qui retourne l 'escart temps changé
      * @param ecartt

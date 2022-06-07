@@ -23,6 +23,10 @@ public abstract class EtapeIG implements Iterable<PointDeControleIG>{
     protected int ecartTemps;
     protected int nbJeton;
 
+    public void setNbJeton(int nbJeton) {
+        this.nbJeton = nbJeton;
+    }
+
     /**
      * Constructeur de EtapeIG
      * @param nom
