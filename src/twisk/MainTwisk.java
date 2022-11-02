@@ -25,7 +25,7 @@ public class MainTwisk extends Application{
         root.setCenter(vuemondeig);
         root.setBottom(vueoutils);
         root.setTop(monmenu);
-        stage.setScene(new Scene(root,650,550));
+        stage.setScene(new Scene(root,1000,700));
         stage.show();
     }
     public void stop(){
